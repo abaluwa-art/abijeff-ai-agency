@@ -2,7 +2,7 @@
 
 A complete, no-code build package for an **AI Operating System (AIOS)** that runs a hardwood timber business (Rosewood, Teak, Mahogany, Kiaat) from supplier sourcing to payments. It uses n8n, Airtable, Google Sheets, Gmail, QuickBooks Online and a Telegram approval bot. A human approves every money-moving step, and every sale is invoiced through ZRA Smart Invoice.
 
-The example business throughout is *Mukwa Hardwoods Ltd, Lusaka*. Replace the names, TPINs and IDs with your own as you configure each tool.
+Built for **Abijeff Investments Limited** (Lusaka; registered with PACRA). Customer and supplier names, buyer TPINs and QuickBooks IDs in the examples are invented samples. Replace them with real ones as you configure each tool.
 
 ## Start here
 1. Read **[Section 14 — Fastest first win](docs/14-mistakes-first-win.md)** (5 minutes) and do the "do this today" step.

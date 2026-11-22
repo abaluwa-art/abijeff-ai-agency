@@ -17,6 +17,8 @@ ZRA = Zambia Revenue Authority. VAT = Value Added Tax, 16% standard rate. TPIN =
   - **Before the effective date: do not charge VAT.** A business that is not yet VAT-registered must not show VAT on its invoices. W2 enforces this: while `vatRate` is above 0 and `vatEffectiveDate` is empty or in the future, every invoice is **blocked** with a ⛔ message. If you must invoice before registration takes effect, set `vatRate` = 0 temporarily, and have the accountant confirm the wording and whether those sales need a Smart Invoice.
   - **From the effective date:** every sale needs a fiscal invoice through Smart Invoice at 16% VAT, except zero-rated exports, which need export documentation (item 9). You can also start claiming input VAT on supplier invoices, but only if they are fiscal invoices with your TPIN on them. Tell your timber suppliers your TPIN.
 
+- [ ] **1b. Renew the Tax Clearance Certificate (TCC).** Abijeff's current TCC (issued 29/08/2025) was **valid only to 31/12/2025**. Apply for a new one on the ZRA portal. Large buyers, mines and government tenders usually ask for a valid TCC before they place an order, so the Sales Agent escalates tenders to you. Put a reminder in your calendar every December to renew it for the next year.
+
 - [ ] **2. Confirm how QuickBooks connects to ZRA Smart Invoice.**
   QuickBooks Online has **no built-in ZRA Smart Invoice connection**. Ask your accountant which of these applies:
   - (a) **An accredited ZRA system integrator** offers a QuickBooks Online ↔ VSDC connector. Then the QuickBooks invoice created by W2 is fiscalised automatically. Ask the integrator to confirm in writing which QuickBooks field becomes the ZRA invoice number, and set `ZRA_InvoiceNo` from it.
@@ -24,9 +26,9 @@ ZRA = Zambia Revenue Authority. VAT = Value Added Tax, 16% standard rate. TPIN =
   - Either way, record the decision here: Integration = ______, Contact = ______, Date confirmed = ______.
 
 - [ ] **3. Verify mandatory invoice fields.** Tick each one on a real test invoice:
-  - [ ] Seller name: *Mukwa Hardwoods Ltd*
-  - [ ] Seller TPIN (10 digits)
-  - [ ] Seller physical address (e.g. *Plot 1234, Lumumba Road, Lusaka*)
+  - [ ] Seller name: *Abijeff Investments Limited*, exactly as registered with PACRA and ZRA
+  - [ ] Seller TPIN: Abijeff's 10-digit TPIN, as on the ZRA Tax Clearance Certificate
+  - [ ] Seller physical address: the registered address on the ZRA Tax Clearance Certificate (Emmasdale, Lusaka)
   - [ ] Buyer name: exactly as registered, e.g. *Chongwe Builders Ltd*
   - [ ] **Buyer TPIN** (10 digits): mandatory for B2B. W2 blocks orders without it.
   - [ ] Buyer phone / address

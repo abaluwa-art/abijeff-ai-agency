@@ -214,7 +214,7 @@ def agent(wf, name, text, system, pos, max_iter=5):
 def config(wf, pos, extra=()):
     fields = [
         ("telegramChatId", "123456789", "string"),
-        ("businessName", "Mukwa Hardwoods Ltd", "string"),
+        ("businessName", "Abijeff Investments Limited", "string"),
         ("inputCostPer1M", 0.15, "number"),
         ("outputCostPer1M", 0.60, "number"),
     ] + list(extra)
@@ -990,7 +990,7 @@ def build_w4():
         "resource": "draft",
         "subject": f"=Re: {{{{ {E}.subject }}}}",
         "emailType": "text",
-        "message": f"=Dear {{{{ {A}.supplier_name || 'Sir/Madam' }}}},\n\nThank you for your quotation. Before we proceed, could you please confirm:\n\n{{{{ ([...({A}.clarifying_questions || []), {R}.Notes].filter(Boolean)).map((q, i) => (i + 1) + '. ' + q).join('\\n') }}}}\n\nKind regards,\nProcurement\nMukwa Hardwoods Ltd, Lusaka",
+        "message": f"=Dear {{{{ {A}.supplier_name || 'Sir/Madam' }}}},\n\nThank you for your quotation. Before we proceed, could you please confirm:\n\n{{{{ ([...({A}.clarifying_questions || []), {R}.Notes].filter(Boolean)).map((q, i) => (i + 1) + '. ' + q).join('\\n') }}}}\n\nKind regards,\nProcurement\nAbijeff Investments Limited, Lusaka",
         "options": {"threadId": f"={{{{ {E}.threadId }}}}", "sendTo": f"={{{{ {E}.fromEmail }}}}"},
     }, (3020, 420), notes="Draft only. You review and press Send in Gmail.", **RETRY)
     a_info = audit_set(wf, "Audit – Info Requested", (3240, 420), "Sourcing Agent", "SupplierNeedsInfo",
@@ -1069,7 +1069,7 @@ def render_agent_specs():
 
 
 def render_bible():
-    parts = ["# AIOS Build Bible — Mukwa Hardwoods Ltd (Zambia)\n",
+    parts = ["# AIOS Build Bible — Abijeff Investments Limited (Zambia)\n",
              "_Generated from docs/01–14. Paste this file into a Google Doc titled \"AIOS Build Bible\"._\n"]
     for f in sorted((ROOT / "docs").glob("[0-9][0-9]-*.md")):
         parts.append(f.read_text().strip() + "\n")

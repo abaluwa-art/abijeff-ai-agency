@@ -17,7 +17,7 @@ Timestamps may arrive as text (`2026-11-20 16:53:10` or `2026-11-20T14:45:00.000
 ### 10.2 Layout of the `Dashboard` tab
 
 ```
-A1  AIOS Dashboard — Mukwa Hardwoods Ltd          B2: =TODAY()-7   (window start, label A2: "Last 7 days from")
+A1  AIOS Dashboard — Abijeff Investments Limited          B2: =TODAY()-7   (window start, label A2: "Last 7 days from")
 Row 4 headers:  A Agent | B KPI | C Current | D Target | E Status
 Rows 5–14: the 10 tiles below
 Row 19 header: "Weekly trend (last 12 weeks)"
