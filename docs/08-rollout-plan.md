@@ -12,7 +12,8 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
   5. Create the Telegram bot and get your chat ID (Section 5, steps 1–2).
   6. Create all 7 credentials in n8n (Section 4.2). Leave QuickBooks on **Sandbox**.
   7. Import **W0 Error Handler**, connect its credentials and save it.
-  8. Book a 1-hour meeting with your accountant for Week 4 to go through Section 7.
+  8. **Submit the VAT registration** to ZRA (Section 7, item 1). It must be effective before invoices go live in Week 6.
+  9. Book a 1-hour meeting with your accountant for Week 4 to go through Section 7.
 - **Deliverable:** Empty but connected stack. A manual test of W0 (open it → Test workflow) sends a 🚨 test message to Telegram.
 - **Go/No-Go:** Go if every credential shows "Connection tested successfully" and the Telegram test arrives.
 - **Time:** 8–10 h.
@@ -47,7 +48,7 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
   2. Set realistic ReorderLevel_m3 values per SKU, e.g. 3 weeks of average sales. Rosewood and Kiaat need more because of 3–6 week lead times.
   3. Activate W3.
   4. Agree with the yard manager: update Stock_m3 and LastUpdated every Friday.
-  5. Hold the accountant meeting (Section 7) and record the VAT status and Smart Invoice route.
+  5. Hold the accountant meeting (Section 7): check progress on the VAT registration and record the Smart Invoice route.
 - **Deliverable:** 5 consecutive daily briefings or ✅ heartbeats, plus a signed Section 7 checklist items 1–2.
 - **Go/No-Go:** Go if the briefing arrives by 07:05 every day and the flags match your own judgement.
 - **Time:** 4 h.
@@ -62,12 +63,13 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
   5. Expected: (a) and (b) reach the Telegram approval; (c) and (d) are blocked with ⛔ and appear in Approvals as Error.
   6. Approve (a) **twice**: set it to ReadyToInvoice again after the first run. The second run must say "Duplicate prevented".
 - **Deliverable:** 2 Sandbox invoices, 0 duplicates, 2 correctly blocked orders.
-- **Go/No-Go:** Go only if all 6 expectations pass **and** the accountant has confirmed the Smart Invoice route.
+- **Go/No-Go:** Go only if all 6 expectations pass **and** the accountant has confirmed the Smart Invoice route. While testing in the Sandbox, put a past date in `vatEffectiveDate` so test invoices aren't blocked. Change it back to the real date before Week 6.
 - **Time:** 8–10 h. This is the hardest week; Section 13 budgets for 4 h of paid help here.
 
 ### Week 6 — Invoicing Agent live with HITL
 - **Goal:** Real invoices go through W2, and you issue every fiscal invoice.
 - **Tasks:**
+  0. **Gate:** the VAT certificate has arrived and its effective date is in W2 Config `vatEffectiveDate`. No certificate means No-Go for live invoicing; keep invoicing manually.
   1. Reconnect the QuickBooks credential as **Production**. Change `qboBaseUrl` to `https://quickbooks.api.intuit.com` and the Config IDs to the production IDs.
   2. Activate W2.
   3. For every approval: check the Telegram numbers against the order, Approve, issue the fiscal invoice in Smart Invoice, and paste ZRA_InvoiceNo into Airtable.

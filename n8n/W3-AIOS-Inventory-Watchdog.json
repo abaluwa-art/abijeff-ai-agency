@@ -12,7 +12,7 @@
           ]
         }
       },
-      "id": "813aacdb-b402-41ea-98e3-e40ab2d72d10",
+      "id": "b0521461-c903-49d8-9d60-50528f98f5f0",
       "name": "Every Day 07:00 CAT",
       "type": "n8n-nodes-base.scheduleTrigger",
       "typeVersion": 1.2,
@@ -28,25 +28,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "a6f06637-50c6-4f55-8d6a-3dd689b54d9f",
+              "id": "9eeada60-a5d0-453a-9457-5f10a603c420",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "6d10927b-8669-41f8-9bd2-b0814780d3dc",
+              "id": "17086639-491d-4850-840b-75e731e26da0",
               "name": "businessName",
               "value": "Mukwa Hardwoods Ltd",
               "type": "string"
             },
             {
-              "id": "5b615a7a-a530-4418-8994-b88053889de8",
+              "id": "aa0fcfc5-9c7e-4a5d-958f-bee800bbb144",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "0898e2d7-4037-4bff-942f-de64eee4041c",
+              "id": "f4b1e8dc-5445-4ae3-98ab-ce185dc1cea3",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
@@ -56,7 +56,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "e7d6a241-ac3d-4c41-9aff-7697633476b3",
+      "id": "e260d516-51aa-4ba6-a505-f9685aa07307",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -84,7 +84,7 @@
         },
         "options": {}
       },
-      "id": "f3c23941-14e1-4125-9008-e753cc7c166b",
+      "id": "2ed76a0d-5ba1-4882-9bfe-b4f0bb2d4837",
       "name": "Read Inventory Sheet",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -103,7 +103,7 @@
         "mode": "runOnceForAllItems",
         "jsCode": "// Flags LOW and STALE rows deterministically. The AI only prioritises and writes the briefing.\nconst now = $now.setZone('Africa/Lusaka');\nconst flagged = [];\nlet total = 0;\nfor (const item of $input.all()) {\n  const r = item.json;\n  if (!r.SKU) continue;\n  total++;\n  const stock = Number(r.Stock_m3), reorder = Number(r.ReorderLevel_m3);\n  const flags = [];\n  if (!isNaN(stock) && !isNaN(reorder) && stock <= reorder) flags.push('LOW');\n  if (!isNaN(stock) && stock < 0) flags.push('NEGATIVE');\n  const updated = DateTime.fromISO(String(r.LastUpdated || ''), { zone: 'Africa/Lusaka' });\n  if (!updated.isValid || now.diff(updated, 'days').days > 7) flags.push('STALE');\n  if (flags.length) {\n    // Suggest topping up to 2x reorder level, rounded up to the nearest 0.5 m3.\n    const suggested = flags.includes('LOW') ? Math.max(0, Math.ceil((reorder * 2 - Math.max(stock, 0)) * 2) / 2) : 0;\n    flagged.push({ SKU: r.SKU, Species: r.Species, Grade: r.Grade, Dimensions: r.Dimensions, Stock_m3: stock,\n                   ReorderLevel_m3: reorder, LastUpdated: r.LastUpdated, Location: r.Location, Notes: r.Notes || '',\n                   suggested_order_m3: suggested, flags });\n  }\n}\nreturn [{ pairedItem: { item: 0 }, json: { checkedAt: now.toFormat('yyyy-MM-dd HH:mm'), totalSkus: total, flaggedCount: flagged.length, flagged } }];"
       },
-      "id": "603c2df0-c3e0-4348-baf9-d745d8c3e8f5",
+      "id": "a1297e63-c901-42cb-a25e-fabf0a2f7a6f",
       "name": "Flag Low & Stale Stock",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -123,7 +123,7 @@
           },
           "conditions": [
             {
-              "id": "8bdcb621-a256-4d4c-9de3-e8d603391f4d",
+              "id": "58489b39-0f83-4366-bb9f-df8731e703c1",
               "leftValue": "={{ $json.flaggedCount }}",
               "operator": {
                 "type": "number",
@@ -137,7 +137,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "7ff55404-12f5-4985-98e0-b45f4bbcb9ed",
+      "id": "32ac9f29-e59a-4400-8823-b1614e27d5f4",
       "name": "Anything to Report?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -155,7 +155,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "e496e79c-05c2-4f88-8271-44ba8c161636",
+      "id": "88829309-9f6e-46c8-9827-e0c5c05539bc",
       "name": "Telegram – All Good",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -174,73 +174,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "a2062edf-b4c8-4c1c-83c6-9831fe26ad5b",
+              "id": "97e9e694-4ad2-4af9-bd75-64e348e636f4",
               "name": "Agent",
               "value": "Inventory Agent",
               "type": "string"
             },
             {
-              "id": "ed7bb78c-ed55-419f-962d-39d7ac1dc075",
+              "id": "0f6099f7-14e2-4b39-9ea2-78a34c12b853",
               "name": "Action",
               "value": "DailyStockCheck",
               "type": "string"
             },
             {
-              "id": "31132f73-621b-4dc7-98f5-12d70c2bb62c",
+              "id": "957c078b-6f39-400c-90c0-c6f0459f25ec",
               "name": "RecordID",
               "value": "={{ $('Flag Low & Stale Stock').item.json.checkedAt }}",
               "type": "string"
             },
             {
-              "id": "4b0dd9c2-3a20-4e75-b30d-8925c1477537",
+              "id": "3d93ff50-2b88-440a-bdc5-ea17a655152a",
               "name": "InputSummary",
               "value": "={{ $('Flag Low & Stale Stock').item.json.totalSkus + ' SKUs checked' }}",
               "type": "string"
             },
             {
-              "id": "88417e03-5026-477a-92e7-cc33726b8ad0",
+              "id": "3194588b-ba7a-49a3-af7f-848a7d0998d9",
               "name": "OutputSummary",
               "value": "No alerts",
               "type": "string"
             },
             {
-              "id": "88763b87-0730-4051-b2a0-ec6fb6cfce4c",
+              "id": "d7e6b650-5dfb-4253-9d0b-9a04e0362e62",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "57ca2c35-6a6c-4269-a639-03a841580835",
+              "id": "0f49a929-09e3-489c-92d7-08aa9b8f835c",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "46908738-e60b-4922-b787-38e470014663",
+              "id": "16b206e3-5fbc-4554-b464-a54d779abb73",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "38751dc4-9191-4066-b4df-3823ce60e929",
+              "id": "775f56ed-1009-45a1-ba49-6e013bc465b2",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "f4d51211-f6f5-45dd-a4bf-80095b359530",
+              "id": "6d5ef246-5e0c-46c0-9b76-d29027a11298",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "50ba1a31-3427-405e-bfce-da4d6bd64771",
+              "id": "487fe035-e8c4-49b2-9a55-4c364126c143",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "248b8cca-b258-4834-9351-6b6c6e4d6ce7",
+              "id": "b7697acc-314c-49bb-b92c-9aa00ea39d9a",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -249,7 +249,7 @@
         },
         "options": {}
       },
-      "id": "55bbf3ef-3419-4068-acab-aa8fae9d066e",
+      "id": "55286624-7f20-429b-a312-717352438936",
       "name": "Audit – Stock OK",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -268,7 +268,7 @@
           "maxIterations": 3
         }
       },
-      "id": "1bd49559-9f91-4104-89d8-3571448ec99f",
+      "id": "a62f4261-e311-4177-9592-e5aa1e59649d",
       "name": "Inventory Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
@@ -295,7 +295,7 @@
           "maxRetries": 2
         }
       },
-      "id": "e2c84b5c-8979-410d-bee1-b436ceb2d146",
+      "id": "e0cf8fe1-332c-4391-bfce-91b931e1155c",
       "name": "OpenAI gpt-4o-mini",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
@@ -312,7 +312,7 @@
         "sessionKey": "inventory-watchdog",
         "contextWindowLength": 6
       },
-      "id": "1ba3d431-89fc-4f43-aec6-8c597bb4e1a6",
+      "id": "9eb1e1cf-11d2-47ea-921e-0fe2a0dee1ec",
       "name": "Memory – Daily Inventory",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
@@ -329,7 +329,7 @@
         "jsonSchemaExample": "{\n  \"owner_briefing\": \"Good morning. 2 SKUs need action: Rosewood 50x150 KD is at 1.2 m3 (reorder 4.0) ...\",\n  \"sourcing_task_needed\": true,\n  \"alerts\": [\n    {\n      \"sku\": \"ROS-KD-50x150\",\n      \"species\": \"Rosewood\",\n      \"urgency\": \"high\",\n      \"suggested_order_m3\": 7.0,\n      \"note\": \"Below 50% of reorder level; 3-6 week lead time.\"\n    }\n  ],\n  \"recount_requests\": [\n    \"KIA-AD-75x225 at Yard B\"\n  ]\n}",
         "autoFix": false
       },
-      "id": "6df94084-5281-4374-855a-aea5f20e8e62",
+      "id": "2bc09289-43f7-4bcb-9a2b-f3d5694c1704",
       "name": "Inventory Briefing Schema",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -347,7 +347,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "4fef0030-caa7-473c-92f3-e16807187f5a",
+      "id": "45e9aafd-ade6-487a-b2de-583ca181c5b6",
       "name": "Telegram – Stock Briefing",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -370,7 +370,7 @@
           },
           "conditions": [
             {
-              "id": "a768d277-ea9e-4e15-8106-ec742adf8714",
+              "id": "0025b7e6-beaf-41b5-adc9-8b3cde29aa4a",
               "leftValue": "={{ $('Inventory Agent').item.json.output.sourcing_task_needed }}",
               "operator": {
                 "type": "boolean",
@@ -385,7 +385,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "402eb0a3-07c9-422d-a0b6-8430319c3b37",
+      "id": "aa192684-4427-4c65-8bfe-2d2dada6583c",
       "name": "Sourcing Task Needed?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -399,73 +399,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "02b4d946-1eb8-4aaa-8236-13b193dcf783",
+              "id": "f83c87f9-e84d-4b01-a99d-b58a811627c2",
               "name": "Agent",
               "value": "Inventory Agent",
               "type": "string"
             },
             {
-              "id": "526ac718-7140-455e-aafd-f107aada8d2b",
+              "id": "06ea1261-cc5c-418e-bd13-fd7db5f1a08d",
               "name": "Action",
               "value": "DailyStockBriefing",
               "type": "string"
             },
             {
-              "id": "ad90a9ce-0a87-4c73-bef2-cba26723a1bc",
+              "id": "ba52337b-10d8-4e14-a6a6-24296d0f9026",
               "name": "RecordID",
               "value": "={{ $('Flag Low & Stale Stock').item.json.checkedAt }}",
               "type": "string"
             },
             {
-              "id": "48ee9750-042e-4a6a-a4f0-d0153b9ec9cb",
+              "id": "752abe9a-8bd0-4c09-8213-db0655280b11",
               "name": "InputSummary",
               "value": "={{ $('Flag Low & Stale Stock').item.json.flaggedCount + ' flagged of ' + $('Flag Low & Stale Stock').item.json.totalSkus }}",
               "type": "string"
             },
             {
-              "id": "d0a6563a-f55d-4c48-a3dd-2fa3e7b1b6c9",
+              "id": "b2ae8567-2bda-4295-b434-429b8405ea21",
               "name": "OutputSummary",
               "value": "Briefing sent; no sourcing task needed",
               "type": "string"
             },
             {
-              "id": "f8460b35-3514-4396-aa04-a78f8897cc55",
+              "id": "c1b96c61-b085-427b-bfd0-4ac7bd81d30b",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "25dbc250-2b2b-4204-93bb-05aa2e9875ff",
+              "id": "14034152-2e0c-4d29-ab30-e823f3f3246f",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "a4237c14-3684-4d8a-971f-ec20d5b0554f",
+              "id": "50d711ee-c3f1-4a5b-a394-74ec1d6e324e",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "0d8d5054-075b-4ddb-b3a1-6d2bca7be41d",
+              "id": "86a51c7f-f806-4835-bf6c-94d48518a2e0",
               "name": "InputTokens",
               "value": "={{ Math.round(((JSON.stringify($('Flag Low & Stale Stock').item.json.flagged).length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "bfb9c572-5230-48e7-a7f2-597cd69f76d0",
+              "id": "635fd554-a615-4e59-b972-38ccfbbe6c06",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Inventory Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "82503260-a972-4903-9ffd-cab80c7ff5c0",
+              "id": "9e42752d-0229-4628-8b80-799d9189faf8",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round(((JSON.stringify($('Flag Low & Stale Stock').item.json.flagged).length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Inventory Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "6e4da886-e28f-41fc-8192-738da5fd1221",
+              "id": "edd6db34-2b4d-4a48-8732-f2802afe941e",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -474,7 +474,7 @@
         },
         "options": {}
       },
-      "id": "55587a0b-b001-4fa7-93c2-e855868066df",
+      "id": "1a7ab47c-7c21-4642-8f22-c5856db92e78",
       "name": "Audit – Briefing Only",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -489,7 +489,7 @@
         "include": "noOtherFields",
         "options": {}
       },
-      "id": "cfddeb08-ad6e-4a87-83cd-d280b9f037e5",
+      "id": "ebea8541-3878-46b6-b151-a58075bf11e1",
       "name": "One Item per Alert",
       "type": "n8n-nodes-base.splitOut",
       "typeVersion": 1,
@@ -509,7 +509,7 @@
           },
           "conditions": [
             {
-              "id": "b1673b5c-b697-414c-a7fd-2885ec41267f",
+              "id": "550778d6-5305-4619-a175-24e0627a14fb",
               "leftValue": "={{ $json.urgency }}",
               "operator": {
                 "type": "string",
@@ -523,7 +523,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "b97bc1ec-9aba-41eb-b199-be2067ec872c",
+      "id": "440f3de8-c8c1-4cdb-badc-849e864240ff",
       "name": "High or Medium Only",
       "type": "n8n-nodes-base.filter",
       "typeVersion": 2.2,
@@ -550,7 +550,7 @@
         "filterByFormula": "=AND({Action}='SourcingTask', OR({Status}='Pending', {Status}='NeedsInfo'))",
         "options": {}
       },
-      "id": "4413217e-9357-47e2-bcfb-c9204ecd4af2",
+      "id": "159f845f-3cd3-423d-b87e-658a762aaeb9",
       "name": "Find Open Sourcing Tasks (idempotency)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -571,7 +571,7 @@
         "mode": "runOnceForAllItems",
         "jsCode": "// Drops alerts for SKUs that already have an open (Pending / NeedsInfo) sourcing task.\nconst openPayloads = $input.all().map(i => String(i.json.Payload || '')).join(' ');\nreturn $('High or Medium Only').all()\n  .filter(a => !openPayloads.includes('\"sku\":\"' + a.json.sku + '\"'))\n  .map((a, idx) => ({ json: a.json, pairedItem: { item: 0 } }));"
       },
-      "id": "b36c4fb7-ebf7-4069-8a64-a5a973813990",
+      "id": "b2563a7c-3dcf-4518-99be-31e29bbbba2f",
       "name": "Keep SKUs Without Open Task",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -614,7 +614,7 @@
           "typecast": true
         }
       },
-      "id": "ca2dae90-f088-4a0e-9f9c-4c21d3f7c756",
+      "id": "89ed1448-0414-4a4a-a27b-3f07201152e3",
       "name": "Create Sourcing Task",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -631,73 +631,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "10ef4e2e-02fe-4967-a07d-f50cd07c5009",
+              "id": "47657d98-6804-42ee-a0b4-43978d2d29e7",
               "name": "Agent",
               "value": "Inventory Agent",
               "type": "string"
             },
             {
-              "id": "da8b4ad5-8d06-4348-b391-ac17c6e5b2a8",
+              "id": "5807fbe0-85ea-4349-a0be-14a7942c8dff",
               "name": "Action",
               "value": "CreateSourcingTask",
               "type": "string"
             },
             {
-              "id": "39a5cec9-5eb3-402a-946f-1bdecdbd9ee4",
+              "id": "54f7b37f-f9f0-45e8-926b-2b1ecc1c7a29",
               "name": "RecordID",
               "value": "={{ $('Keep SKUs Without Open Task').item.json.sku }}",
               "type": "string"
             },
             {
-              "id": "8ecdeb7e-399e-4591-87af-062beaa7d279",
+              "id": "b433b0bc-50eb-401e-86e1-46d66863ebc2",
               "name": "InputSummary",
               "value": "={{ $('Keep SKUs Without Open Task').item.json.species + ' ' + $('Keep SKUs Without Open Task').item.json.urgency }}",
               "type": "string"
             },
             {
-              "id": "caab1859-4a3c-4627-ac59-8e6930fa2a72",
+              "id": "af9e6094-158b-43a0-8a08-00d6bc49d1e9",
               "name": "OutputSummary",
               "value": "={{ 'Suggested order ' + $('Keep SKUs Without Open Task').item.json.suggested_order_m3 + ' m3' }}",
               "type": "string"
             },
             {
-              "id": "4e160a0c-7b6c-454d-a558-996f3f82a570",
+              "id": "be88a6d6-a73b-4aba-a27e-ad9ce55df069",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "e4b3fd01-da13-4c28-83c3-68ec8955e43f",
+              "id": "4b5520d3-9434-4125-bc59-d65672798a28",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "4f6f0fee-4002-4358-96ce-4111df124f5a",
+              "id": "677fef12-aa64-4049-8877-b6b653427853",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "66741d0c-243b-4ffc-836f-82418c850450",
+              "id": "30561c32-e9d1-43c0-a556-6ca065e01a0d",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "52150be4-0520-4081-b1bc-cfeb973b877a",
+              "id": "3906c818-3a07-4d4d-a6f1-a2fd72991b85",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "7f443864-de20-4476-b2c8-8f994f1f59ab",
+              "id": "5259b56b-b22b-4593-aad4-7722cc4afa29",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "7c4a4856-4c34-4ec9-895a-e768bdc7aa65",
+              "id": "b8b9ee2e-b268-433c-a868-c1bd7774e805",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -706,7 +706,7 @@
         },
         "options": {}
       },
-      "id": "c46fe619-0627-404c-a6fe-b2eae70c38b9",
+      "id": "4283fe2e-55cf-439c-861e-ba2edd69303c",
       "name": "Audit – Sourcing Task",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -751,7 +751,7 @@
         },
         "options": {}
       },
-      "id": "f0677837-dfc1-4035-adac-5f39b401bb5e",
+      "id": "0c3dda46-f0a9-4fca-a01a-e2c2027fd945",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -776,7 +776,7 @@
           },
           "conditions": [
             {
-              "id": "8c4a4b93-3148-4f0a-835e-d733596d42f6",
+              "id": "26e7c459-e139-437c-bdfb-ee4133034f25",
               "leftValue": "={{ $json.TokenCost }}",
               "operator": {
                 "type": "number",
@@ -790,7 +790,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "d14f7c05-11d3-4020-96e9-b920aaf5eb52",
+      "id": "6dc7e6e1-d8b7-4b11-9125-de2ade9bccdd",
       "name": "Agent Ran?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -832,7 +832,7 @@
         },
         "options": {}
       },
-      "id": "2d1ac9f1-1b78-4da2-a70c-094ee71bc0ca",
+      "id": "633c6db7-3e69-4589-9ed4-2955869ba32c",
       "name": "Append to TokenCosts",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -851,73 +851,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "348682bf-5a9e-46ed-ad11-5f606b2f4249",
+              "id": "6479d9ad-3a86-4db4-beb9-e669f7ec5a6d",
               "name": "Agent",
               "value": "Inventory Agent",
               "type": "string"
             },
             {
-              "id": "a8cfd756-8403-40e0-a670-d45e8031b6a2",
+              "id": "4c8f76fd-baa3-489d-b7c9-c10f1c1f2704",
               "name": "Action",
               "value": "DailyStockBriefing",
               "type": "string"
             },
             {
-              "id": "4a50b4dc-db80-4877-8a0e-90da72b70d18",
+              "id": "024b26a6-4527-49d5-a9d2-b1e1fd7ecac3",
               "name": "RecordID",
               "value": "={{ $('Flag Low & Stale Stock').item.json.checkedAt }}",
               "type": "string"
             },
             {
-              "id": "ef041c99-9e80-48ee-9d22-ea5afb3985e7",
+              "id": "30dff50f-5458-455d-a027-37a474f76ab6",
               "name": "InputSummary",
               "value": "={{ $('Flag Low & Stale Stock').item.json.flaggedCount + ' flagged of ' + $('Flag Low & Stale Stock').item.json.totalSkus }}",
               "type": "string"
             },
             {
-              "id": "d0c6dbee-92d7-48f1-89eb-aa2cb53c935b",
+              "id": "02e94f82-341a-40ec-8a30-88d716ea16e0",
               "name": "OutputSummary",
               "value": "Briefing sent; sourcing tasks evaluated",
               "type": "string"
             },
             {
-              "id": "324335f4-1133-44c0-8604-c35989b74cbd",
+              "id": "ae222ac5-0f67-4765-abf3-bd048ebe4273",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "b5a2de35-4362-4c26-a7f2-90ca2231f588",
+              "id": "935a9423-9f0b-422b-b87b-333aea17b3c0",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "31d80335-800e-48f1-b2cb-76d4363f0de7",
+              "id": "2c5e482b-185d-4566-9c69-30d9334bc986",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "62893685-f357-4133-bd03-e061ebeb0f9a",
+              "id": "6d93f85b-81f6-47f5-90ce-a4bf947c99e0",
               "name": "InputTokens",
               "value": "={{ Math.round(((JSON.stringify($('Flag Low & Stale Stock').item.json.flagged).length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "f1da3079-ba27-4a10-a237-58e81a5eea40",
+              "id": "28befbdb-7d0e-4875-b386-2d73f90e2a66",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Inventory Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "039cec7b-5b4f-4f4b-bd0d-f1f629367b3f",
+              "id": "bb471b26-7245-4aee-99c0-0264cd07aa6a",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round(((JSON.stringify($('Flag Low & Stale Stock').item.json.flagged).length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Inventory Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "9a2978df-0b44-436d-85ee-d157817d2118",
+              "id": "850a4b7f-4aca-447c-8ce2-5280b40a3d51",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -926,7 +926,7 @@
         },
         "options": {}
       },
-      "id": "20fd2736-3ac3-4b3f-999b-d9adb36b39dc",
+      "id": "e8c9d53a-f605-40d5-9d0d-33ec4cbb058a",
       "name": "Audit – Briefing Sent",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,

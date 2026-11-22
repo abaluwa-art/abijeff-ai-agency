@@ -34,4 +34,4 @@ It is tempting to switch on "email invoice to customer" in QuickBooks, or to let
 You have now saved the time spent typing lead details into a spreadsheet, and every enquiry is logged, with nothing sent that you haven't seen.
 
 ### Do this today
-**Book a 1-hour call with your accountant for this week. Ask two questions: "Are we VAT-registered, and how should our QuickBooks invoices become ZRA Smart Invoice fiscal invoices: portal or accredited connector?"** Every invoicing decision in this build depends on those two answers, and your accountant is the only one who can give them.
+**Submit the VAT registration to ZRA this week, and ask your accountant one question: "How should our QuickBooks invoices become ZRA Smart Invoice fiscal invoices: through the portal or an accredited connector?"** Live invoicing (Week 6) cannot start until the VAT certificate has arrived and that question is answered. Starting the registration now means it doesn't hold up the rollout.

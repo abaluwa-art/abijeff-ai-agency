@@ -3,7 +3,7 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "0ad11198-b1f5-4325-ad80-66f4360b7911",
+      "id": "79419cf7-911f-4ab7-904c-d76e3d144150",
       "name": "Error Trigger",
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
@@ -19,25 +19,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "80a95efc-6564-4099-ae24-0aa2c7d0ab53",
+              "id": "9964dc84-cf42-41ca-b031-71e278dd65e9",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "29c13cbf-b91c-4223-a038-88a8e3356631",
+              "id": "aa68234c-b77f-4404-918e-88cb80e19b88",
               "name": "businessName",
               "value": "Mukwa Hardwoods Ltd",
               "type": "string"
             },
             {
-              "id": "79963cc3-cb6e-4c77-b3e3-ee1bed355f2e",
+              "id": "ac4452ac-10df-463d-9ede-7671c5b70a9a",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "734da862-9320-4586-b4a0-fdafa4eace85",
+              "id": "7b5ae391-ce91-4d59-8c7b-4e4dc151e28a",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
@@ -47,7 +47,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "88593cda-0382-4a8a-865e-301315c3fdad",
+      "id": "665758c1-c5af-43d5-a51f-77517b01bae0",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -94,7 +94,7 @@
           "typecast": true
         }
       },
-      "id": "43673244-7707-4f13-9af8-27ea5a89d5a4",
+      "id": "ef53f80d-4962-4cc4-842d-2bf1f02f9ff6",
       "name": "Dead-letter: Approvals (Status=Error)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -115,7 +115,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "ecd38d25-48e5-4834-b86c-c843716b2cd1",
+      "id": "325fe80b-21b3-4ccb-9406-560e47e2b674",
       "name": "Telegram – Error Alert",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -132,73 +132,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "7159eb1c-74b9-448c-953c-eb0058fb6528",
+              "id": "4d5998b7-7d5e-43c7-96ed-05d85c7d98b7",
               "name": "Agent",
               "value": "={{ $('Error Trigger').item.json.workflow.name }}",
               "type": "string"
             },
             {
-              "id": "583dccfd-ad08-4c9f-b27e-42bef2afa1d0",
+              "id": "8865d4fc-45e8-44c3-a945-a7891c48691b",
               "name": "Action",
               "value": "WorkflowError",
               "type": "string"
             },
             {
-              "id": "0cd491f7-6d5d-48f3-ab8e-82664822d925",
+              "id": "88cbb329-efc4-4332-aeea-efa639e969f6",
               "name": "RecordID",
               "value": "={{ $('Error Trigger').item.json.execution.id }}",
               "type": "string"
             },
             {
-              "id": "f4f035b9-8abb-4704-86e4-4a83228b6a67",
+              "id": "832f075f-3ca7-4aae-b876-e21c9b611622",
               "name": "InputSummary",
               "value": "={{ 'Failed node: ' + $('Error Trigger').item.json.execution.lastNodeExecuted }}",
               "type": "string"
             },
             {
-              "id": "672dfeb8-b818-41b9-a529-4357d24d7c7b",
+              "id": "179ab40e-fcea-4c73-b114-ee3a142086d6",
               "name": "OutputSummary",
               "value": "={{ ($('Error Trigger').item.json.execution.error.message || '').slice(0, 200) }}",
               "type": "string"
             },
             {
-              "id": "651b7edd-82b4-4507-abfa-5737205d38ad",
+              "id": "b9cecc05-495b-4857-97b3-7b2bae1fa5f3",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "af3bac92-5d09-4ba7-8a95-057392be5429",
+              "id": "4eba3017-fa96-4767-8b98-da77d2839979",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "698704b4-d3c0-40a9-a3e0-63a08b969697",
+              "id": "77682249-1d19-4146-b95d-dfeb72dff987",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "039cf2e7-5bc1-4ee7-b41c-53cf33a8ed65",
+              "id": "fe703431-6056-438d-85e7-10d2da348661",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "d63f9583-6c05-417d-849c-16324507566f",
+              "id": "10c85ad6-5e08-43e8-adfe-84bb92cb4edc",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "1067eb0d-5fc2-42ac-a4ed-387914ab1c47",
+              "id": "30771267-bccd-4489-a732-c756e5136517",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "4e3b5149-8c7f-4541-97c0-3adf72ddb990",
+              "id": "a3c707e7-494b-4830-ba59-1b74c0739f49",
               "name": "ErrorFlag",
               "value": "TRUE",
               "type": "string"
@@ -207,7 +207,7 @@
         },
         "options": {}
       },
-      "id": "868a3101-488a-4f59-a63a-05f9b90cccca",
+      "id": "54b566bb-2b48-4763-b130-1131046bb932",
       "name": "Audit – Error",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -252,7 +252,7 @@
         },
         "options": {}
       },
-      "id": "84131567-a916-42f6-8ef9-5b31d24a6c3c",
+      "id": "264b5127-7e0a-4888-b4d1-419756c13dff",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,

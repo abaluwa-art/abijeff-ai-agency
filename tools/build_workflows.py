@@ -495,6 +495,11 @@ for (const item of $input.all()) {
                  qty_m3: qty, unit_price: unit, line_total: Math.round(qty * unit * 100) / 100 });
   }
   const vatRate = Number(cfg.vatRate);
+  // VAT may only be charged from the effective date on the ZRA VAT registration certificate.
+  const vatFrom = String(cfg.vatEffectiveDate || '').trim();
+  const today = $now.setZone('Africa/Lusaka').toFormat('yyyy-MM-dd');
+  if (vatRate > 0 && (!/^\d{4}-\d{2}-\d{2}$/.test(vatFrom) || today < vatFrom))
+    issues.push(`VAT is set to ${vatRate}% but VAT registration is not effective yet (Config vatEffectiveDate = "${vatFrom}"). Set the date from the ZRA VAT certificate, or set vatRate to 0 until then`);
   const subtotal = Math.round(lines.reduce((s, l) => s + l.line_total, 0) * 100) / 100;
   const vat = Math.round(subtotal * vatRate) / 100;
   const total = Math.round((subtotal + vat) * 100) / 100;
@@ -545,12 +550,13 @@ def build_w2():
     }, (0, 300), notes="Paste the URL of the Airtable Orders table into Base and Table. UpdatedAt must be a 'Last modified time' field. Polls every 15 min (Airtable API quota).")
     c = config(wf, (200, 300), extra=[
         ("vatRate", 16, "number"),
+        ("vatEffectiveDate", "", "string"),
         ("qboRealmId", "9341453050123456", "string"),
         ("qboBaseUrl", "https://quickbooks.api.intuit.com", "string"),
         ("qboVatTaxCodeId", "5", "string"),
         ("qboItemMap", '{"Rosewood":"21","Teak":"22","Mahogany":"23","Kiaat":"24"}', "string"),
     ])
-    wf.nodes[-1]["notes"] = ("EDIT ONCE: telegramChatId; qboRealmId (QuickBooks → ⚙ → Account and settings → Billing → Company ID); "
+    wf.nodes[-1]["notes"] = ("EDIT ONCE: telegramChatId; vatEffectiveDate (yyyy-mm-dd from the ZRA VAT certificate; invoices are blocked until it is set); qboRealmId (QuickBooks → ⚙ → Account and settings → Billing → Company ID); "
                              "qboVatTaxCodeId and qboItemMap (Section 4 tells you how to find these IDs). For sandbox testing use https://sandbox-quickbooks.api.intuit.com.")
     already = wf.add("Already Invoiced?", "n8n-nodes-base.if", 2.2, if_params([
         cond("={{ $json.fields.InvoiceID }}", "string", "notEmpty"),

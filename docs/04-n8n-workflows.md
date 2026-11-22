@@ -55,7 +55,7 @@ Flow: Gmail → Config → Prepare Email → **Find Existing Leads** (one lookup
 
 **W2 – Invoice Preparation**
 1. **Airtable Trigger – ReadyToInvoice** → Airtable credential. In **Base** and **Table**, paste the URL of the Orders table from your browser (it looks like `https://airtable.com/app…/tbl…/viw…`). The trigger field `UpdatedAt` and the formula `{Status}='ReadyToInvoice'` are preset.
-2. **Config** → fill in the QuickBooks values (see 4.4): `qboRealmId`, `qboVatTaxCodeId`, `qboItemMap`. While testing, set `qboBaseUrl` to `https://sandbox-quickbooks.api.intuit.com`.
+2. **Config** → set `vatEffectiveDate` to the effective date on your ZRA VAT certificate (`yyyy-mm-dd`). Until it is set, W2 blocks every invoice, so it never charges VAT before you are registered. Then fill in the QuickBooks values (see 4.4): `qboRealmId`, `qboVatTaxCodeId`, `qboItemMap`. While testing, set `qboBaseUrl` to `https://sandbox-quickbooks.api.intuit.com`.
 3. Both **QBO –** HTTP nodes → *Credential for QuickBooks Online OAuth2 API* → pick your QuickBooks credential.
 4. **OpenAI gpt-4o-mini** → OpenAI credential.
 

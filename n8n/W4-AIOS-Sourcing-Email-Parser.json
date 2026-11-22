@@ -18,7 +18,7 @@
         },
         "options": {}
       },
-      "id": "c84306e7-7d8a-4bbd-b002-af2fb706789d",
+      "id": "668de1fb-e2fa-46fb-a6f5-7deadbc2e1e3",
       "name": "Gmail Trigger – Suppliers",
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1.2,
@@ -34,37 +34,37 @@
         "assignments": {
           "assignments": [
             {
-              "id": "c627d960-46fa-4eaa-a3d0-7a9b93e4608b",
+              "id": "fd41e462-2a6a-49e8-b7f1-cc6d5ad49183",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "cead7f43-6942-4701-8893-e29a1faeb611",
+              "id": "84028bfa-1626-480d-ba09-222844828d84",
               "name": "businessName",
               "value": "Mukwa Hardwoods Ltd",
               "type": "string"
             },
             {
-              "id": "f8110e12-04c1-4c28-abbc-c19c34d49347",
+              "id": "ee018aab-853c-4544-8174-e73d5772fe9e",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "2d209e24-0cb8-428a-8903-435b7b60e173",
+              "id": "396520a8-0a4a-44bf-b483-ae9b3622a380",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
             },
             {
-              "id": "78ceef68-db64-42dd-afb7-4ecd795ea96d",
+              "id": "abfb79a0-3cc7-4af2-a633-90793ae879c2",
               "name": "inputCostPer1M_deepseek",
               "value": 0.28,
               "type": "number"
             },
             {
-              "id": "15bcb442-886b-4736-9342-583c4c3678e2",
+              "id": "fadcac34-7f92-4a03-902d-e00d0a8e7c6c",
               "name": "outputCostPer1M_deepseek",
               "value": 0.42,
               "type": "number"
@@ -74,7 +74,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "5d4cb05a-ba77-4f34-92cc-dc273619173b",
+      "id": "1242f00d-eec6-4d12-8f14-b45317c52eeb",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -90,43 +90,43 @@
         "assignments": {
           "assignments": [
             {
-              "id": "30842273-4ef6-4b0e-82b5-aa99d1027383",
+              "id": "0ceeae87-ead8-4229-a1e8-bf742b0984bd",
               "name": "messageId",
               "value": "={{ $json.id }}",
               "type": "string"
             },
             {
-              "id": "fe87c9ca-e2e0-4a02-ad42-dcd12685f012",
+              "id": "6e28a828-db54-4b4e-aa78-9a56691ac132",
               "name": "threadId",
               "value": "={{ $json.threadId }}",
               "type": "string"
             },
             {
-              "id": "05813991-19bc-4770-984b-f3e061bee9c1",
+              "id": "25ba542b-ef37-4259-aa1d-7e36b458e67d",
               "name": "fromEmail",
               "value": "={{ ($json.from?.value?.[0]?.address || '').toLowerCase() }}",
               "type": "string"
             },
             {
-              "id": "8a7ba9c8-ba21-4ce0-8d6f-f1ec1eced2ef",
+              "id": "fd497aa0-1040-4e96-ba20-5e426f854d0e",
               "name": "fromName",
               "value": "={{ $json.from?.value?.[0]?.name || '' }}",
               "type": "string"
             },
             {
-              "id": "6a4b92e3-8298-45c6-9602-2f89f678bba4",
+              "id": "2a35802a-f400-4862-b938-1bc46b9e02ed",
               "name": "subject",
               "value": "={{ $json.subject || '(no subject)' }}",
               "type": "string"
             },
             {
-              "id": "d5871585-7cf7-453c-85ee-a0d5505bdb59",
+              "id": "2475b010-0056-4f65-a9b2-f257a5c08203",
               "name": "bodyText",
               "value": "={{ ($json.text || '').slice(0, 8000) }}",
               "type": "string"
             },
             {
-              "id": "ed862e30-bf97-49f2-9735-3f8556a0534f",
+              "id": "13e732f8-e92d-4a42-8192-b6e61bc5f2c0",
               "name": "attachmentNames",
               "value": "={{ Object.values($binary || {}).map(b => b.fileName).join(', ') }}",
               "type": "string"
@@ -135,7 +135,7 @@
         },
         "options": {}
       },
-      "id": "294ece41-c966-4a12-8a10-ac2afc724859",
+      "id": "16024f45-f1c9-4af8-8a67-0d38b48807e0",
       "name": "Prepare Email",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -154,7 +154,7 @@
           "maxIterations": 5
         }
       },
-      "id": "d9740ff1-6969-49e1-bd39-a404cf387eea",
+      "id": "9df6ac02-01c3-4326-a1ee-7130d339132e",
       "name": "Sourcing Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
@@ -176,7 +176,7 @@
           "maxRetries": 2
         }
       },
-      "id": "454433ce-4be9-4e25-b69c-2ed8022c3b3d",
+      "id": "c1b90e81-64ec-47fe-8336-c3ceb31bd38c",
       "name": "DeepSeek Chat (extraction)",
       "type": "@n8n/n8n-nodes-langchain.lmChatDeepSeek",
       "typeVersion": 1,
@@ -193,7 +193,7 @@
         "sessionKey": "={{ $('Prepare Email').item.json.threadId }}",
         "contextWindowLength": 6
       },
-      "id": "647eb527-99c4-4ee6-9a4a-7cd1c2bfa9ae",
+      "id": "f5027d9a-4b1d-4f8f-acfc-b5c49c826b41",
       "name": "Memory – Supplier Thread",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
@@ -226,7 +226,7 @@
         "limit": 50,
         "options": {}
       },
-      "id": "79cf14ef-6d6f-445e-82d0-949d812f6495",
+      "id": "8db9ae95-ee33-4ca6-b8c2-62deff0e5881",
       "name": "Supplier Lookup (read-only)",
       "type": "n8n-nodes-base.airtableTool",
       "typeVersion": 2.1,
@@ -243,7 +243,7 @@
         "jsonSchemaExample": "{\n  \"is_supplier_quote\": true,\n  \"supplier_name\": \"Kabompo Timber Concessions\",\n  \"supplier_email\": \"sales@kabompotimber.co.zm\",\n  \"quotes\": [\n    {\n      \"species\": \"Kiaat\",\n      \"grade\": \"Select\",\n      \"form\": \"sawn\",\n      \"price_per_m3_usd\": 610,\n      \"price_per_m3_zmw\": null,\n      \"volume_available_m3\": 25,\n      \"lead_time_days\": 21,\n      \"delivery_terms\": \"Delivered Lusaka\"\n    }\n  ],\n  \"has_legality_docs\": true,\n  \"comparison\": \"USD 610 vs last price USD 580 (+5.2%). Cheapest Kiaat supplier on file.\",\n  \"recommendation\": \"accept\",\n  \"red_flags\": [\n    \"example red flag\"\n  ],\n  \"clarifying_questions\": [\n    \"Can you confirm moisture content for sawn Kiaat?\"\n  ],\n  \"summary\": \"Kabompo offers 25 m3 Kiaat sawn at USD 610/m3 delivered Lusaka, 21 days; licence attached.\"\n}",
         "autoFix": false
       },
-      "id": "2a652d5b-a56e-4d8a-add9-909a803be1b0",
+      "id": "bd0a935c-747b-4b06-aa0d-b91cbbd89e87",
       "name": "Supplier Quote Schema",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -263,7 +263,7 @@
           },
           "conditions": [
             {
-              "id": "3931e235-8005-4ff1-bfac-95d43809a998",
+              "id": "850fbeb3-3f5d-4086-880d-4f3d61de1d8e",
               "leftValue": "={{ $('Sourcing Agent').item.json.output.is_supplier_quote }}",
               "operator": {
                 "type": "boolean",
@@ -278,7 +278,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "1dfbc47f-3175-4528-bb90-7f4f9a0132c8",
+      "id": "3f729d5f-53a9-436f-8a7d-8bf940c06913",
       "name": "Is Supplier Quote?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -292,73 +292,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "ed861d93-0968-4272-af61-9c7dccc40564",
+              "id": "5ce725d9-aace-4b70-86cc-23fb3976e488",
               "name": "Agent",
               "value": "Sourcing Agent",
               "type": "string"
             },
             {
-              "id": "579a6e0d-93d0-42fd-9e72-6abf0017af12",
+              "id": "e1001699-9b38-4e63-a814-27889fb60a3c",
               "name": "Action",
               "value": "ClassifyNotQuote",
               "type": "string"
             },
             {
-              "id": "44bfc1c9-e511-4c3e-9309-a224c96c5036",
+              "id": "c26559db-ea88-405b-ae68-5401b5791042",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "00014868-46b2-4074-894b-2a4b7303ab06",
+              "id": "57b3cce4-c842-4b7e-85fc-c5cb66cb0fa1",
               "name": "InputSummary",
               "value": "={{ $('Prepare Email').item.json.subject }}",
               "type": "string"
             },
             {
-              "id": "5180c143-4279-49de-b0fc-8687580477ca",
+              "id": "19aa01eb-8aed-44d8-8ea0-ba678cc9dd34",
               "name": "OutputSummary",
               "value": "={{ $('Sourcing Agent').item.json.output.summary }}",
               "type": "string"
             },
             {
-              "id": "6bf21310-56ed-407c-91ae-556b1b562dd9",
+              "id": "f5655e26-f302-4362-9ecc-af981e25be23",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "8c64b2c1-a466-49c6-ada2-9b70d7ea588e",
+              "id": "b21acb3e-5dd5-4024-9074-2fae9737eabc",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "b934b495-371b-4987-a31a-1312cc8b625c",
+              "id": "9cbf129c-392e-451b-a934-56471361f12f",
               "name": "Model",
               "value": "deepseek-chat",
               "type": "string"
             },
             {
-              "id": "c4a3a6c4-9291-46e9-9099-c63f82490714",
+              "id": "a292b358-e9fa-4912-921a-bc71e6d333a7",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "dd1fdd85-8c16-4ffd-a3c8-d16c12417594",
+              "id": "0e874527-cbee-42f6-bc7d-3a6868e12383",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "3c158a42-fabc-48b9-b00b-ec625001d73d",
+              "id": "2f0a7360-7fb9-49f2-8797-0b050df6650f",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "31934268-74f5-4d90-953a-ab47b6ba23f4",
+              "id": "8bc5ce73-bfbc-4b45-9dad-a869593b1585",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -367,7 +367,7 @@
         },
         "options": {}
       },
-      "id": "25cba759-2fd9-4bce-b068-14c847b4cd79",
+      "id": "ca9cfb08-5a53-4a5a-84ad-2c68a3c741c8",
       "name": "Audit – Not a Quote",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -381,7 +381,7 @@
         "assignments": {
           "assignments": [
             {
-              "id": "8482a94f-471d-49c2-8c53-46bd4e92ccd6",
+              "id": "e8bb43f5-cadd-42e6-87b4-fd80dfc155b7",
               "name": "supplierKey",
               "value": "={{ ($json.output.supplier_email || $('Prepare Email').item.json.fromEmail || '').toLowerCase().trim() }}",
               "type": "string"
@@ -391,7 +391,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "f8e71b7c-0d6e-455b-9709-fafd73714715",
+      "id": "bcd22984-635f-4800-a079-10826e72d3c0",
       "name": "Supplier Email Key",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -419,7 +419,7 @@
         "returnAll": true,
         "options": {}
       },
-      "id": "5accd9d0-b588-44c0-8b67-4ec070adde17",
+      "id": "b6b014f5-bb29-48ad-9834-ae2b49ef82de",
       "name": "Load All Suppliers",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -451,7 +451,7 @@
         "joinMode": "enrichInput1",
         "options": {}
       },
-      "id": "687273e5-f3b6-4d5a-8933-3ab537797509",
+      "id": "36a2e1c2-d432-475e-adf6-c22ff8f3f107",
       "name": "Match Supplier by Email",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
@@ -471,7 +471,7 @@
           },
           "conditions": [
             {
-              "id": "3c09e3d9-afed-46f3-af5d-7b3db49778a6",
+              "id": "0711a5a5-f179-48d0-bd18-3c07772760d5",
               "leftValue": "={{ $json.id }}",
               "operator": {
                 "type": "string",
@@ -486,7 +486,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "906dd7b6-a252-4931-912b-d8c5ccd4d694",
+      "id": "16114a91-afd4-46fa-8623-d96442d08309",
       "name": "Supplier Exists?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -529,7 +529,7 @@
           "typecast": true
         }
       },
-      "id": "01ad2f5e-50bd-4b07-b397-418a4700463e",
+      "id": "461b5f3c-bbb6-4d3b-b353-daced0f9709b",
       "name": "Update Supplier Price",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -577,7 +577,7 @@
           "typecast": true
         }
       },
-      "id": "b50d4b13-9974-4874-b1de-a9e1f895c10d",
+      "id": "ce57682d-2076-4885-93f7-7d6c32b021fa",
       "name": "Create Supplier",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -644,7 +644,7 @@
           }
         }
       },
-      "id": "c0d7ff1e-e191-454b-8c04-4bb68c1613e1",
+      "id": "cbbf787c-a143-4133-9899-4cff1699d247",
       "name": "Telegram – Approve Supplier Quote?",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -664,7 +664,7 @@
           },
           "conditions": [
             {
-              "id": "604d059a-fb06-453c-b5d1-5a02a9de2ac6",
+              "id": "aabbff64-cd27-4639-b219-cec51d37b8e8",
               "leftValue": "={{ $json.data.Decision }}",
               "operator": {
                 "type": "string",
@@ -678,7 +678,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "487bb40e-9b6f-4bf4-bbd1-21789c70e0e4",
+      "id": "f30920f3-70db-4136-879d-095673521bae",
       "name": "Approved?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -698,7 +698,7 @@
           },
           "conditions": [
             {
-              "id": "53e20dc0-2ef2-44fd-b67d-e4a425f569c3",
+              "id": "1cf24850-ec1c-4869-bad7-97ab53c65695",
               "leftValue": "={{ $json.data.Decision }}",
               "operator": {
                 "type": "string",
@@ -712,7 +712,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "85d1cdac-f7b1-445b-b8df-366d3cd6e9d9",
+      "id": "9acfbc66-7ba4-4ab5-b752-266b28ebcf87",
       "name": "Need More Info?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -757,7 +757,7 @@
           "typecast": true
         }
       },
-      "id": "e605bc46-48c3-48e4-8ce2-18ea7eb89a5f",
+      "id": "f1e62979-104d-43a5-aeb0-93e40bbabd6c",
       "name": "Approvals → ApproveSupplierQuote",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -776,73 +776,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "cebf1bed-0129-47b5-b3d2-7028d4e7b9ef",
+              "id": "83a2fdb4-1d5e-474e-b53d-d6d70c3de5dd",
               "name": "Agent",
               "value": "Sourcing Agent",
               "type": "string"
             },
             {
-              "id": "972d97c2-dfda-4e99-815e-688855ac72cc",
+              "id": "a6bba023-e0ba-41d0-b93e-8344ea580217",
               "name": "Action",
               "value": "ApproveSupplierQuote",
               "type": "string"
             },
             {
-              "id": "589b4339-4ae7-42b8-82e2-a2398a0f606c",
+              "id": "4a3ac747-28ae-47ad-9be6-7b6ca2c8f4c5",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "e3fe6946-17a5-4db3-9818-9cff1082b9ef",
+              "id": "a51eaa41-9828-4065-a9e5-7a96a7e788e3",
               "name": "InputSummary",
               "value": "={{ $('Sourcing Agent').item.json.output.supplier_name }}",
               "type": "string"
             },
             {
-              "id": "867ad944-c6ea-4122-b39c-efb87c817784",
+              "id": "ab8add9b-15a5-495b-84e5-e59dfcb57a3f",
               "name": "OutputSummary",
               "value": "={{ $('Sourcing Agent').item.json.output.summary }}",
               "type": "string"
             },
             {
-              "id": "1c20f03a-4444-4ea3-867a-e2bdd131bf5b",
+              "id": "1074a235-42be-4523-b8e2-fdea16c1c193",
               "name": "HumanApproved",
               "value": "TRUE",
               "type": "string"
             },
             {
-              "id": "9b5f5790-35fd-4376-a09e-7bc677139397",
+              "id": "6e90afd8-6978-44d2-8aab-17cdf9d93be8",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Approve Supplier Quote?').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "13660fdb-c0be-42b9-94cf-a4390e72fa25",
+              "id": "6579df68-6212-4737-b790-61cbe96a953c",
               "name": "Model",
               "value": "deepseek-chat",
               "type": "string"
             },
             {
-              "id": "9e6f0742-0b48-4084-a7d6-5bc4bc2be73a",
+              "id": "609d6eb9-62f4-44bf-b30c-1c1df71e6e2c",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "63019bc6-50d6-445e-82bb-734b93ea5104",
+              "id": "3d059f47-bee1-4b9f-af98-409a6a2fb37d",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "6597f6d8-246c-4c85-beb7-d9cff19293e0",
+              "id": "d022ec4b-7f10-4760-9977-021a55a3201d",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "c8d3e348-3d2f-4233-b238-3b6d751e5c06",
+              "id": "6c333343-48cd-4953-a4ab-a8655fd686c4",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -851,7 +851,7 @@
         },
         "options": {}
       },
-      "id": "e237d2ef-484e-44e4-8299-9926d5bbd296",
+      "id": "b60c5c47-1dd5-4600-87fa-e559954a826f",
       "name": "Audit – Quote Approved",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -871,7 +871,7 @@
           "sendTo": "={{ $('Prepare Email').item.json.fromEmail }}"
         }
       },
-      "id": "9d692274-dfbf-476f-a38f-43c675d0dde3",
+      "id": "4b5bff9d-0e9e-4aea-8fb9-36813f5549a1",
       "name": "Gmail Draft – Questions to Supplier",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
@@ -890,73 +890,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "638eb9d3-e625-4df3-bb30-706a8dc50a90",
+              "id": "532ad660-cf5b-4edc-9f7f-e446459a730f",
               "name": "Agent",
               "value": "Sourcing Agent",
               "type": "string"
             },
             {
-              "id": "9fb3ad60-93e7-41e2-8561-e07fcfbc3ced",
+              "id": "7ded9621-d710-4017-8736-6f0270f0c19e",
               "name": "Action",
               "value": "SupplierNeedsInfo",
               "type": "string"
             },
             {
-              "id": "f794a7c1-cbba-46cc-8825-19c2a99b3b4a",
+              "id": "e90089c6-e6af-4136-ac14-d4ef896cd842",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "8954acea-8c76-4b6a-a382-46208874070a",
+              "id": "ae6bb8ef-5cc2-427b-8f32-10646a7aaff1",
               "name": "InputSummary",
               "value": "={{ $('Sourcing Agent').item.json.output.supplier_name }}",
               "type": "string"
             },
             {
-              "id": "149b0f7f-2a1c-4848-ac82-49119e36dfc3",
+              "id": "60fb51c6-040c-40d2-a414-161b5748d31e",
               "name": "OutputSummary",
               "value": "={{ $('Telegram – Approve Supplier Quote?').item.json.data.Notes || 'clarifying questions drafted' }}",
               "type": "string"
             },
             {
-              "id": "bb221e74-445a-4cd1-8633-546f9e94304a",
+              "id": "00fc5073-1bea-4911-b4be-bd170e03908b",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "f1bde3e3-3c8e-4d6e-9db6-f68bc7d35578",
+              "id": "63c597ea-563d-43cf-a1e1-20c1f759c77e",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Approve Supplier Quote?').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "94e388ac-fb30-4291-acc8-1729e69df9cf",
+              "id": "38fe6746-6786-472d-939b-ac3ebc84549e",
               "name": "Model",
               "value": "deepseek-chat",
               "type": "string"
             },
             {
-              "id": "ae9da06e-fd08-4394-aba8-985c39ef3a5f",
+              "id": "cdc7cc2a-7496-4bf8-a8f1-098c4d93762f",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "2b775606-a98f-4c91-824a-90de76770a47",
+              "id": "5f8cfe7d-fd5a-4b9f-944b-d908026fc667",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "19a537b6-3085-4b3c-b230-7d573b5e9d4f",
+              "id": "b92ad987-34b5-4b5f-9079-fbc653d979de",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "7a10233c-6305-49e7-9fd9-a38c2829efc9",
+              "id": "a47d6a1c-2208-4185-ad74-723955fe2e06",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -965,7 +965,7 @@
         },
         "options": {}
       },
-      "id": "8c181348-84b1-4728-9154-fd7fb65230f2",
+      "id": "0ee0c05d-f2cf-4066-973d-b8e3d0dfb465",
       "name": "Audit – Info Requested",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1011,7 +1011,7 @@
           "typecast": true
         }
       },
-      "id": "5d9fe416-17bd-4ec1-b135-e2a94551b3e4",
+      "id": "2daeba15-a9f7-4f01-ac22-e8a7ba02105b",
       "name": "Approvals → Denied",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -1028,73 +1028,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "5be04b32-d043-4ba3-9290-6f1f3a8b27ad",
+              "id": "67d1135b-50d4-4e52-93b9-c796ca68ac7c",
               "name": "Agent",
               "value": "Sourcing Agent",
               "type": "string"
             },
             {
-              "id": "25331d34-883c-4b21-a859-a625fa6158cf",
+              "id": "7460c9b2-3124-4e33-bec6-b9d11f5bef59",
               "name": "Action",
               "value": "DenySupplierQuote",
               "type": "string"
             },
             {
-              "id": "ddf53ec9-15c7-4f38-81a1-768493913283",
+              "id": "99dfd915-31f8-4045-99a7-db1bc1dd0434",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "de08fe8c-8fa4-4ea7-9931-1b8747d819e2",
+              "id": "7c97995b-8d30-4cf6-befb-4d17815292ad",
               "name": "InputSummary",
               "value": "={{ $('Sourcing Agent').item.json.output.supplier_name }}",
               "type": "string"
             },
             {
-              "id": "150f897b-baab-4c42-89a1-e0fdad7bc2fb",
+              "id": "863ec35c-c03e-4c7d-9f14-0ca01c3c8502",
               "name": "OutputSummary",
               "value": "={{ $('Telegram – Approve Supplier Quote?').item.json.data.Notes || '' }}",
               "type": "string"
             },
             {
-              "id": "480c5028-ad5d-4897-9edb-1cd4db453299",
+              "id": "b04e7707-0c47-43e8-8105-09f5235713e3",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "daccc824-9b84-4cf4-86de-3adb83eebb84",
+              "id": "25d1c351-f5c1-4e6c-b0de-577ebd5c8325",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Approve Supplier Quote?').item.json.data.Reviewer || '' }}",
               "type": "string"
             },
             {
-              "id": "5b92d94d-c0eb-47b4-82da-1c9ee22cd9e5",
+              "id": "faf65332-4452-4511-bb04-804ad4c3c424",
               "name": "Model",
               "value": "deepseek-chat",
               "type": "string"
             },
             {
-              "id": "f042df06-0a71-44f9-b142-571a7bd1eeeb",
+              "id": "a10619b0-59ff-4568-b92b-e5ab2eb28b59",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "55aa898f-868c-4bd9-a2e8-5359386a9079",
+              "id": "6ab4ef89-7e27-4482-bc18-136aa3d70202",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "d1d6b853-d6a2-46ee-a779-3884ac0c50f8",
+              "id": "a016b716-566b-4649-89d6-7a70057b1094",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sourcing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "5e82d95f-96d0-47ed-b016-785cccb68b84",
+              "id": "44792a62-f039-4fd3-abd9-dc9e7c239724",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -1103,7 +1103,7 @@
         },
         "options": {}
       },
-      "id": "a8757167-81cb-42a6-9080-b6347061d29b",
+      "id": "9afe8743-9c93-4366-b4b2-30621bfaf154",
       "name": "Audit – Quote Denied",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1148,7 +1148,7 @@
         },
         "options": {}
       },
-      "id": "5bb42cd0-faba-4677-be52-217935aacf9b",
+      "id": "399fed86-0ad9-46a9-abd6-929a3da44b37",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -1173,7 +1173,7 @@
           },
           "conditions": [
             {
-              "id": "316b30f0-d44a-47d9-b3ee-9f60ad237178",
+              "id": "838dcc41-040a-474f-8297-9bb6ba695c3d",
               "leftValue": "={{ $json.TokenCost }}",
               "operator": {
                 "type": "number",
@@ -1187,7 +1187,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "61c9a426-95e1-4bfc-9559-bb5846dcfad9",
+      "id": "449f011a-7661-4232-947a-73a9fd99e667",
       "name": "Agent Ran?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -1229,7 +1229,7 @@
         },
         "options": {}
       },
-      "id": "1bcadbaa-dcfb-421d-b6c8-3d0671a7e922",
+      "id": "fdd221b5-e803-4eb7-b348-935796db92a4",
       "name": "Append to TokenCosts",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,

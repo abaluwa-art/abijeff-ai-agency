@@ -11,6 +11,7 @@ Mukwa Hardwoods Ltd · AIOS build · Start date: __________ · Owner: __________
 - [ ] 6. Telegram bot created; chat ID noted: ______________
 - [ ] 7. All 7 n8n credentials tested green
 - [ ] 8. W0 Error Handler imported; test 🚨 received on phone
+- [ ] 8a. VAT registration submitted to ZRA (Income Tax already registered ✔)
 
 ### Weeks 2–4 — Sales and Inventory
 - [ ] 9. Gmail label `Inquiries` + filter created
@@ -19,7 +20,8 @@ Mukwa Hardwoods Ltd · AIOS build · Start date: __________ · Owner: __________
 - [ ] 12. W1 active in shadow mode (drafts not sent) for 1 full week
 - [ ] 13. Supervised live: drafts reviewed and sent; TestCases ≥ 85%
 - [ ] 14. W3 Inventory Watchdog imported, reorder levels set, active; 5 briefings received
-- [ ] 15. Accountant meeting held; Section 7 items 1–2 signed (VAT status: ____ · Smart Invoice route: ____)
+- [ ] 15. Accountant meeting held; Smart Invoice route recorded: ____
+- [ ] 15a. VAT certificate received; effective date ____-__-__ entered in W2 Config `vatEffectiveDate`
 
 ### Weeks 5–8 — Invoicing, Sourcing, Sales autonomy
 - [ ] 16. Intuit developer app + QuickBooks Sandbox credential connected
