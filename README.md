@@ -16,7 +16,7 @@ Built for **Abijeff Investments Limited** (Lusaka; registered with PACRA). Custo
 |---|---|
 | `AIOS-Build-Bible.md` | All 14 sections combined, for pasting into Google Docs |
 | `docs/01-architecture.md` … `docs/14-mistakes-first-win.md` | The same sections as separate files |
-| `n8n/W0…W5 *.json` | **Importable n8n workflows**: Error Handler, Sales Lead Intake, Invoice Preparation, Inventory Watchdog, Sourcing Email Parser, and the Orders/Leads → Sheets sync |
+| `n8n/W0…W9 *.json` | **Importable n8n workflows**, one per agent plus support: Error Handler, Sales Lead Intake, Invoice Preparation, Inventory Watchdog, Sourcing Email Parser, Orders/Leads → Sheets sync, Weekly Report, Procurement, Payments Matching, Weekly Reconciliation |
 | `prompts/*.md` | The 8 agent system prompts (copy into n8n AI Agent → System Message, and into the Airtable Prompts table) |
 | `templates/airtable-*.csv` | Import files for the 5 Airtable tables, with sample rows |
 | `templates/sheets-*.csv` | Import files for the Inventory, AuditLog, TokenCosts and TestCases tabs |
@@ -40,5 +40,5 @@ Built for **Abijeff Investments Limited** (Lusaka; registered with PACRA). Custo
 
 ## How the workflow JSON was checked
 - Every node type, version, parameter name and option value was checked against the official n8n node definitions (`n8n-nodes-base` 2.15.1 and `@n8n/n8n-nodes-langchain` 2.48.5).
-- The JavaScript in the two Code nodes (invoice pre-flight maths, stock flagging) was run against the sample data in `templates/`.
+- The JavaScript in every Code node (invoice maths, stock flags, PO pack, payment allocation, reconciliation exceptions, report pack) was run against sample data.
 - The workflows have **not** been run end-to-end against live Gmail, Airtable or QuickBooks accounts, because that needs your credentials. Section 8, Weeks 2–6, is the test plan for that, starting with the QuickBooks Sandbox.

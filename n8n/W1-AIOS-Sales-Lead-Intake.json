@@ -16,7 +16,7 @@
         },
         "options": {}
       },
-      "id": "852ae02e-cb21-4da5-9c73-2a2dfc0369d5",
+      "id": "03d3ae48-e143-41ea-98b3-95149be78dea",
       "name": "Gmail Trigger – Inquiries",
       "type": "n8n-nodes-base.gmailTrigger",
       "typeVersion": 1.2,
@@ -32,25 +32,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "d4c366ba-f00f-47dd-b2fe-c6b983cffe88",
+              "id": "b36449ef-2d80-4d45-9018-d37bb5aedaa4",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "5273d3ef-eb7a-454e-87bc-90409166c498",
+              "id": "40718060-87ae-46b6-83c0-68b83351f071",
               "name": "businessName",
               "value": "Abijeff Investments Limited",
               "type": "string"
             },
             {
-              "id": "24635c91-efb0-4893-ae8e-c6c620f3a00a",
+              "id": "513ddfac-e3e8-4583-bc46-28ba674097af",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "20c4ea13-7c0c-4bb8-b973-1ef7fd0cd40c",
+              "id": "39349d6d-7449-4a04-8556-32e35486f97b",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
@@ -60,7 +60,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "ac81b640-5d74-41b1-b94a-9e82f1294bb1",
+      "id": "0d614f42-2937-4064-b67e-585e23c6c7cd",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -76,43 +76,43 @@
         "assignments": {
           "assignments": [
             {
-              "id": "cd353a0a-958a-4350-b7f2-fc7df182a4c2",
+              "id": "de07619f-3b36-49f1-8980-f01e8b3f1de1",
               "name": "messageId",
               "value": "={{ $json.id }}",
               "type": "string"
             },
             {
-              "id": "ea6703c0-a050-4ee9-885b-f1c6105a62d7",
+              "id": "cb1fbb68-f256-41e1-a79a-1bd42b36b7f7",
               "name": "threadId",
               "value": "={{ $json.threadId }}",
               "type": "string"
             },
             {
-              "id": "6481220b-09f5-4f52-9e6d-942772c49bfb",
+              "id": "e278821b-4d0e-4d35-893d-27dec2925f96",
               "name": "fromEmail",
               "value": "={{ $json.from?.value?.[0]?.address || '' }}",
               "type": "string"
             },
             {
-              "id": "680de319-d9de-4d07-9e6b-b318d2282379",
+              "id": "9045b3a8-9573-4fd8-89e4-b8021d01b618",
               "name": "fromName",
               "value": "={{ $json.from?.value?.[0]?.name || '' }}",
               "type": "string"
             },
             {
-              "id": "08a59a77-836b-4536-9ee0-139004e1232a",
+              "id": "75adfddb-8658-4455-9903-5ebeddd12689",
               "name": "subject",
               "value": "={{ $json.subject || '(no subject)' }}",
               "type": "string"
             },
             {
-              "id": "800928f5-3971-4304-9a6e-1e7e973232ee",
+              "id": "f100f15c-405f-45c3-90e5-8e81d15adfea",
               "name": "bodyText",
               "value": "={{ ($json.text || '').slice(0, 6000) }}",
               "type": "string"
             },
             {
-              "id": "abca2411-8a32-4834-971f-606f7b1e38da",
+              "id": "80e100f3-f7b0-4b5a-b40c-d203b85e3156",
               "name": "receivedAt",
               "value": "={{ $json.date }}",
               "type": "string"
@@ -121,7 +121,7 @@
         },
         "options": {}
       },
-      "id": "9b26bb30-ed53-4819-9bdc-b22a3cb9ec2e",
+      "id": "401f5f35-a277-4f0e-987d-afa632e471b7",
       "name": "Prepare Email",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -150,7 +150,7 @@
         "filterByFormula": "=OR({{ $('Prepare Email').all().map(i => \"{SourceMessageID}='\" + i.json.messageId + \"'\").join(',') }})",
         "options": {}
       },
-      "id": "ddc9c91e-7668-4261-8a6d-3d6117bf8d96",
+      "id": "4032fef5-66fb-471d-b25c-0d158b74e4fa",
       "name": "Find Existing Leads (idempotency)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -182,7 +182,7 @@
         "joinMode": "enrichInput1",
         "options": {}
       },
-      "id": "c2f454b7-7e66-4099-8e69-6ed360e7f245",
+      "id": "8212c471-bbb3-41cb-ab3c-77335f761201",
       "name": "Mark Already-Processed Emails",
       "type": "n8n-nodes-base.merge",
       "typeVersion": 3.2,
@@ -204,7 +204,7 @@
           },
           "conditions": [
             {
-              "id": "8fab9600-5a7d-4441-9f8f-4b7ca9af3c06",
+              "id": "fdb14c60-bb36-4faf-8125-0e1847454243",
               "leftValue": "={{ $json.id }}",
               "operator": {
                 "type": "string",
@@ -219,7 +219,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "fdc8d21d-e6e0-493b-9757-1370418682b3",
+      "id": "6adec55d-685d-4d8b-9f18-8fe5bc70a109",
       "name": "Lead Already Exists?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -233,73 +233,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "726c79e7-9495-4d7d-91a9-20473a2f4a78",
+              "id": "5f8f40f7-fd34-4d33-9401-a65864a10c99",
               "name": "Agent",
               "value": "Sales Agent",
               "type": "string"
             },
             {
-              "id": "5187401b-4b55-4398-b7e4-fe6ce6ed47ba",
+              "id": "69771272-5eba-41be-abd1-ab494bd42f8f",
               "name": "Action",
               "value": "SkipDuplicate",
               "type": "string"
             },
             {
-              "id": "2f2d39cc-9275-4ce1-9c15-2753301908ce",
+              "id": "e5dda6e7-8800-4aa2-8935-ceb793fc181f",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "e32bae03-38f0-40b2-a7ec-94f882aac8b5",
+              "id": "45770d65-b96d-408c-adde-36f34b350af4",
               "name": "InputSummary",
               "value": "={{ $('Prepare Email').item.json.subject }}",
               "type": "string"
             },
             {
-              "id": "5361f36a-751b-4468-b4f5-6ab4307c3457",
+              "id": "a2a26ee6-2ac1-4574-9642-b6496870c798",
               "name": "OutputSummary",
               "value": "Lead already exists for this email; skipped.",
               "type": "string"
             },
             {
-              "id": "4f77a1e1-bf20-4cd4-8a65-270afa4e6bec",
+              "id": "81998565-4da0-4094-bf08-3be7fa976bf0",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "0979cb42-a3e3-492f-9854-401e48ce3b96",
+              "id": "eaee2794-96a2-4275-bfb7-b30e29d2bc77",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "a461399c-180c-4b6b-81f1-30ab13d60b2a",
+              "id": "43ea9cf6-eef7-4c3b-9c46-7f796d493253",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "ec03b789-5598-4ee4-908f-1574cd6876d8",
+              "id": "e4d64745-d467-44fa-b8c5-98a1f22a7e4e",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "01b26bf8-00ce-47ee-bca9-89195877180e",
+              "id": "a5344721-3db1-4b5b-8b24-15e031f47fe7",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "b600a493-a0bb-4c92-9c15-896f3a585fea",
+              "id": "07a7d359-c6c7-44d6-8c43-ecb478091d71",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "9f3c6f5c-b316-49be-bf35-c4cdf9d1ab1a",
+              "id": "39c4b8f4-c9ff-4dec-9eb0-408da6b61280",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -308,7 +308,7 @@
         },
         "options": {}
       },
-      "id": "4ff7b549-1362-4232-90ba-3d26efb06745",
+      "id": "fed51a70-d655-44b6-979e-0468e8bcdc74",
       "name": "Audit – Duplicate Skipped",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -327,7 +327,7 @@
           "maxIterations": 5
         }
       },
-      "id": "d62dfcec-cfe2-43fc-9848-6172bba7f80a",
+      "id": "a8fc532e-3fe1-4b1b-9951-f9fec1952fb7",
       "name": "Sales Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
@@ -354,7 +354,7 @@
           "maxRetries": 2
         }
       },
-      "id": "7f5def57-9341-483d-bce0-512e16fe1072",
+      "id": "e4d26511-d725-4a0d-84b0-33e88f7e8145",
       "name": "OpenAI gpt-4o-mini",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
@@ -371,7 +371,7 @@
         "sessionKey": "={{ $('Prepare Email').item.json.threadId }}",
         "contextWindowLength": 6
       },
-      "id": "295e093f-e4bc-4931-a497-ece8f5fb6422",
+      "id": "a55310c3-e725-4b84-90b7-51190d4d2b1f",
       "name": "Memory – Email Thread",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
@@ -401,7 +401,7 @@
         },
         "options": {}
       },
-      "id": "1c435908-f965-49f7-ae95-9bdec0099954",
+      "id": "f13cd2b7-64bf-4acf-a13f-9603f35760fe",
       "name": "Inventory Lookup (read-only)",
       "type": "n8n-nodes-base.googleSheetsTool",
       "typeVersion": 4.5,
@@ -418,7 +418,7 @@
         "jsonSchemaExample": "{\n  \"category\": \"genuine\",\n  \"customer_name\": \"Chanda Mwale\",\n  \"company\": \"Mwale Joinery Ltd\",\n  \"email\": \"chanda@mwalejoinery.co.zm\",\n  \"phone\": \"+260 977 123456\",\n  \"species\": \"Teak\",\n  \"volume_m3\": 6.5,\n  \"grade\": \"Furniture-grade KD\",\n  \"delivery_location\": \"Kitwe\",\n  \"timeline\": \"Within 3 weeks\",\n  \"tpin\": \"1002345678\",\n  \"buyer_type\": \"B2B\",\n  \"missing_fields\": [\n    \"grade\"\n  ],\n  \"stock_note\": \"in stock\",\n  \"reply_draft\": \"Dear Chanda, thank you for your enquiry ...\",\n  \"escalate\": false,\n  \"escalation_reason\": \"\",\n  \"summary\": \"Joinery in Kitwe wants 6.5 m3 Teak KD within 3 weeks; TPIN given.\"\n}",
         "autoFix": false
       },
-      "id": "c199e455-3a6d-4435-b91f-c80879b3c033",
+      "id": "2b4e1ce9-08de-4151-98f9-04573f00e9ad",
       "name": "Lead JSON Schema",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -438,7 +438,7 @@
           },
           "conditions": [
             {
-              "id": "0e6e0ee9-dece-4147-95ea-cf4ac65abdc0",
+              "id": "1383c06f-a6c5-4456-ae7c-d41209aadfa4",
               "leftValue": "={{ $json.output.category }}",
               "operator": {
                 "type": "string",
@@ -452,7 +452,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "5ba641b3-e97b-4039-a1d9-d1eb24f3d6e9",
+      "id": "fa706faa-24fc-49b0-862b-735c491ca29f",
       "name": "Is Spam?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -466,73 +466,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "bebaf7b4-a3b9-4099-947e-776c5307dc32",
+              "id": "5749be64-b3f2-416d-a86f-ee905eec3b23",
               "name": "Agent",
               "value": "Sales Agent",
               "type": "string"
             },
             {
-              "id": "ac9d8945-4ee4-4282-9cdf-e1565f65075f",
+              "id": "6c4f7d13-d9d3-4a68-a7e7-cd10f43ef171",
               "name": "Action",
               "value": "ClassifySpam",
               "type": "string"
             },
             {
-              "id": "4ce96962-6a9a-4cd9-bde9-38a7e2488f1b",
+              "id": "c99a2f95-9a2d-4c61-8bb6-544ad678b96b",
               "name": "RecordID",
               "value": "={{ $('Prepare Email').item.json.messageId }}",
               "type": "string"
             },
             {
-              "id": "903dd6c7-9fa2-4add-9748-637db204b50f",
+              "id": "9d8ffa57-cb17-494c-b5ed-f3d1ba1d9359",
               "name": "InputSummary",
               "value": "={{ $('Prepare Email').item.json.subject }}",
               "type": "string"
             },
             {
-              "id": "2291eafc-09b5-4018-9c06-ccaffdf293cd",
+              "id": "4181d7f2-4bd3-49cf-97a0-7200b1d0f5e9",
               "name": "OutputSummary",
               "value": "={{ $('Sales Agent').item.json.output.summary }}",
               "type": "string"
             },
             {
-              "id": "2b2c38db-1ca2-4d06-838f-e2ea8f69e69a",
+              "id": "26f17948-60ba-4601-b2b2-c815f2c0350a",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "0d7a4924-3477-4026-afc5-5b40df5ea8a1",
+              "id": "cb9090ea-b644-44dc-a638-7212d1b732c9",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "f6e4dfd1-3e4b-422f-9fd7-91d677d518b6",
+              "id": "bf839e46-a7a3-40db-b99b-f70844a1bebe",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "88000a17-a284-4d2e-acde-3556f8588402",
+              "id": "04d7473a-24df-4c14-9d17-a1c82f9cfbb5",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "f67c2119-83a3-433d-8d1c-32ce931f8124",
+              "id": "6842bc12-70f1-41f2-8147-e2676366aaa7",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "1f759e43-6841-483e-8e9d-a97620ff0ff5",
+              "id": "2acc8c1a-bc38-4c57-bfa0-bddaa59c1f89",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "8b2c855e-680b-48bb-868c-8a5da3cf24fd",
+              "id": "74678b6d-49f0-464d-bb01-2cc8dc9b6af9",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -541,7 +541,7 @@
         },
         "options": {}
       },
-      "id": "7f0d76e6-7430-4912-bdc4-ea4779192e52",
+      "id": "32541637-e9ff-45fa-9815-3c0b9e0ea7ac",
       "name": "Audit – Spam Ignored",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -595,7 +595,7 @@
           "typecast": true
         }
       },
-      "id": "14f41e27-0ebe-4169-883d-af7b984cad5e",
+      "id": "bec0edb8-536f-47a1-9315-e4ddb38f687a",
       "name": "Create Lead in Airtable",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -618,7 +618,7 @@
           },
           "conditions": [
             {
-              "id": "b932f692-6437-470a-b185-c74b3c78ca57",
+              "id": "a03e89c2-b636-416e-85a3-4f1ed8b5d86e",
               "leftValue": "={{ $('Sales Agent').item.json.output.escalate }}",
               "operator": {
                 "type": "boolean",
@@ -628,7 +628,7 @@
               "rightValue": ""
             },
             {
-              "id": "06ff3817-4a46-4638-83ae-2806c2c1167f",
+              "id": "9f2f2658-be57-46dd-a277-00c062279340",
               "leftValue": "={{ $('Sales Agent').item.json.output.category }}",
               "operator": {
                 "type": "string",
@@ -642,7 +642,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "e612ddbf-d30f-4be5-9237-f785677fdd06",
+      "id": "d647d8ac-e31e-40ac-958e-c961ab824193",
       "name": "Needs Owner?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -660,7 +660,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "d8432f83-f2b7-4aab-87ec-3b097cc26393",
+      "id": "c091b4b9-1f89-489e-a914-b81ed2fae5e7",
       "name": "Telegram – Escalation Alert",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -677,73 +677,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "c2089b15-3981-4886-802a-fa976fc3b4c5",
+              "id": "c8b9c930-8b3f-4f27-944e-6f5c3bb84884",
               "name": "Agent",
               "value": "Sales Agent",
               "type": "string"
             },
             {
-              "id": "9e3dc134-a7b4-4325-980d-afeb038f6b94",
+              "id": "8e21b99f-13cf-4b89-9021-792c4b15caa3",
               "name": "Action",
               "value": "EscalateLead",
               "type": "string"
             },
             {
-              "id": "3622714e-630f-425d-98dd-7de997377a20",
+              "id": "158ac6f2-9888-4ba1-a954-9f9f95b8ea62",
               "name": "RecordID",
               "value": "={{ $('Create Lead in Airtable').item.json.fields.LeadID }}",
               "type": "string"
             },
             {
-              "id": "83290233-4abb-47bf-ba81-8e4d525d0838",
+              "id": "35974827-52d1-43f3-a166-55850cf9c335",
               "name": "InputSummary",
               "value": "={{ $('Prepare Email').item.json.subject }}",
               "type": "string"
             },
             {
-              "id": "a6237cbb-f955-4cce-9c7f-c4be28b25287",
+              "id": "3eb845b2-fe8a-426d-bd51-871059dab85a",
               "name": "OutputSummary",
               "value": "={{ $('Sales Agent').item.json.output.category + ': ' + $('Sales Agent').item.json.output.escalation_reason }}",
               "type": "string"
             },
             {
-              "id": "1a642c6d-f39d-4d1a-a809-6aceaba1871d",
+              "id": "c41a4ac6-bf8f-4ff7-80f3-87cc410973c0",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "f832743e-78e9-4900-a464-ecd7ad71f0ad",
+              "id": "a18ee92b-5f27-4da6-86e1-4652061e2d0e",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "17d3c811-924b-48f3-ab98-f150b19eb195",
+              "id": "76180bb7-fdf0-4b3b-9de0-818d32a01888",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "d1ce6b70-b1a9-432d-ad1f-7cfeb56f766f",
+              "id": "15f1aeaa-8214-4c90-a3e3-c38a3002af80",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "9ee6d23a-5323-4f48-aa50-bdda644f0fbe",
+              "id": "06cd76ee-2dde-4452-a5d8-550b41e3729d",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "981bc025-83f4-4247-a8c8-e272f14f90b6",
+              "id": "c2cec403-9eb2-4f93-9fe9-3b72708fe384",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "d4c04be8-52a4-4bf1-b5c6-444d71d009b5",
+              "id": "6ff86904-8c8e-4143-8e0a-b19aeb8cb36a",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -752,7 +752,7 @@
         },
         "options": {}
       },
-      "id": "e8478f1e-5621-4111-ad06-be954f3ea244",
+      "id": "506f6894-cbcb-4e74-825a-c52a1c44e318",
       "name": "Audit – Escalated",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -772,7 +772,7 @@
           "sendTo": "={{ $('Prepare Email').item.json.fromEmail }}"
         }
       },
-      "id": "6f249e0a-d8d1-4a35-b61b-cdc00313df8d",
+      "id": "7f908e9d-5517-4334-9226-45fa686fbe8d",
       "name": "Create Gmail Draft Reply",
       "type": "n8n-nodes-base.gmail",
       "typeVersion": 2.1,
@@ -795,7 +795,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "8629a233-9ca5-4fbe-a8d6-06ad17be1d6d",
+      "id": "43089011-0092-464c-bdd8-16e2f1aba0ad",
       "name": "Telegram – New Lead FYI",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -812,73 +812,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f7234c14-e11f-43db-abff-0e9cd45a39b9",
+              "id": "1bcaf684-fca7-463b-b029-2aa0151ffa35",
               "name": "Agent",
               "value": "Sales Agent",
               "type": "string"
             },
             {
-              "id": "fe554561-dfec-4f4d-a3b1-c82d23537fad",
+              "id": "f279fc91-635d-4c0b-91c3-48d9626a9751",
               "name": "Action",
               "value": "CreateLeadAndDraft",
               "type": "string"
             },
             {
-              "id": "0adcecc1-552e-48a8-bd4a-d1f9ffc4c7af",
+              "id": "668dbed5-5180-4a7c-bef7-9eea63925b1c",
               "name": "RecordID",
               "value": "={{ $('Create Lead in Airtable').item.json.fields.LeadID }}",
               "type": "string"
             },
             {
-              "id": "65cf9d99-0ef5-4300-a6ef-5b9f50b53abb",
+              "id": "cf28fcd9-1b1a-44f1-afbc-c9e23211c543",
               "name": "InputSummary",
               "value": "={{ $('Prepare Email').item.json.subject }}",
               "type": "string"
             },
             {
-              "id": "44caff86-2e3e-400b-8252-4b85ae99be0b",
+              "id": "b4b34ce0-5491-4dd4-9610-e69904e823a4",
               "name": "OutputSummary",
               "value": "={{ $('Sales Agent').item.json.output.summary }}",
               "type": "string"
             },
             {
-              "id": "d660e0cf-f5ba-46a8-8799-e1eb95478fc2",
+              "id": "738333c2-2097-4332-af88-37fee9e41a5f",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "51c420ee-4c11-4557-a899-582c38071d47",
+              "id": "3fde682c-ddc4-460c-82f2-08be1305d7b7",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "0f71389f-3a51-4d56-9088-07533547861f",
+              "id": "f6e2978a-d093-4f1f-81ea-9a45d1eb6441",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "06e8e967-643f-42c0-80a7-863a8e0efc12",
+              "id": "9b1ba85f-8ba1-47e7-8791-63d6724efa3b",
               "name": "InputTokens",
               "value": "={{ Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "94f23502-172d-48e5-ac80-81a629bd71e1",
+              "id": "b7a3b871-2e09-4ec3-933c-740d7b0fda3c",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "ca329021-49ff-49bf-97c0-e6e049d49536",
+              "id": "6d1872bb-d2d8-4855-acde-c1ca0d1059f5",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round((($('Prepare Email').item.json.bodyText.length) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Sales Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "18c6af6d-9f2d-4d20-a7f1-416ef15cd618",
+              "id": "3fa57749-4b7f-489e-bb6f-be8e801e204d",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -887,7 +887,7 @@
         },
         "options": {}
       },
-      "id": "bb594bb0-9d6a-4486-a19c-5388a08e27d9",
+      "id": "e946588c-921b-4a11-8890-ba4866e974ba",
       "name": "Audit – Draft Created",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -932,7 +932,7 @@
         },
         "options": {}
       },
-      "id": "1f093f6a-15d9-42ed-84b0-e1089ed0c839",
+      "id": "48607f3e-e74d-47cf-bf2f-a3b40fe5a523",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -957,7 +957,7 @@
           },
           "conditions": [
             {
-              "id": "c73d9378-0282-4311-99e1-3cab06bf4d3f",
+              "id": "06cb8c4c-eb70-4c4f-a88e-f4f6cccbb0e8",
               "leftValue": "={{ $json.TokenCost }}",
               "operator": {
                 "type": "number",
@@ -971,7 +971,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "259b22db-cb0e-42f7-bcba-a49082282d12",
+      "id": "7cf82b73-ad3b-4ed8-bb0d-db2630dffe3a",
       "name": "Agent Ran?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -1013,7 +1013,7 @@
         },
         "options": {}
       },
-      "id": "235973be-cedd-44d5-a19f-d59f710a9a00",
+      "id": "9f99257b-f0e6-4994-ad7e-31f586779628",
       "name": "Append to TokenCosts",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,

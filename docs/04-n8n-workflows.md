@@ -10,6 +10,10 @@ The workflow files are in the `n8n/` folder of this package:
 | `n8n/W3-AIOS-Inventory-Watchdog.json` | AIOS – Inventory Watchdog | 24 | Daily 07:00 Africa/Lusaka |
 | `n8n/W4-AIOS-Sourcing-Email-Parser.json` | AIOS – Sourcing Email Parser | 28 | Gmail label `Suppliers`, every 10 min |
 | `n8n/W5-AIOS-Sync-Orders-Leads-to-Sheets.json` | AIOS – Sync Orders & Leads to Sheets | 5 | Hourly. Copies Airtable to Sheets for the Dashboard (Section 10) |
+| `n8n/W6-AIOS-Weekly-Report.json` | AIOS – Weekly Report | 16 | Friday 16:00 CAT |
+| `n8n/W7-AIOS-Procurement.json` | AIOS – Procurement (Purchase Orders) | 33 | Airtable Approvals: approved quote with OrderQty_m3, every 15 min |
+| `n8n/W8-AIOS-Payments-Matching.json` | AIOS – Payments Matching | 26 | Weekdays 17:00 CAT |
+| `n8n/W9-AIOS-Weekly-Reconciliation.json` | AIOS – Weekly Reconciliation | 18 | Monday 08:00 CAT |
 
 Every file has been checked against the official n8n node definitions (n8n-nodes-base 2.15, @n8n/n8n-nodes-langchain 2.48). Each node type, version, parameter and option value exists in n8n. The two Code nodes were run against sample orders and stock rows. They produced the totals shown in Section 2. Each workflow is **inactive** on import, so nothing runs until you switch it on.
 
@@ -76,6 +80,33 @@ Flow: Schedule → Config → Read Inventory → **Flag Low & Stale Stock** (Cod
 4. Gmail, Airtable and Telegram credentials in the remaining nodes.
 
 Flow: Gmail → Config → Prepare Email → **Sourcing Agent** (+ DeepSeek, memory, supplier lookup, JSON schema) → Is Supplier Quote? → Supplier Email Key → **Load All Suppliers** + **Match Supplier by Email** (Merge) → Supplier Exists? → Update price **or** Create supplier → **Telegram – Approve Supplier Quote?** → Approved: Approvals row `ApproveSupplierQuote` (for Procurement) / Need More Info: Gmail draft with questions to the supplier / Deny: Approvals row Denied → AuditLog.
+
+**W6 – Weekly Report** (Week 10)
+1. Config → `ownerEmail` = the address that should receive the report.
+2. Both **Read** nodes → AIOS Sheets → `Dashboard`. The ranges `A4:E14` (tiles) and `A20:F32` (trend) are preset to match Section 10.
+3. Credentials in the OpenAI, Airtable, Gmail and Telegram nodes → Activate.
+
+Flow: Friday 16:00 → Read KPI Tiles → Read Weekly Trend → Find Waiting Approvals → **Build Report Pack** (Code) → **Reporting Agent** → Gmail to owner → Telegram headline → AuditLog (`SendWeeklyReport`, which feeds Dashboard tile C12).
+
+**W7 – Procurement (Purchase Orders)** (Week 9)
+1. Airtable: add `OrderQty_m3`, `LinkedPO` and `UpdatedAt` (Last modified time) to **Approvals**, and `QBO_VendorID` to **Suppliers** (Section 2).
+2. QuickBooks: create each supplier as a **Vendor** (currency USD if they quote in USD). On the 4 timber items, tick **"I purchase this product/service from a vendor"** and choose an expense or cost-of-sales account.
+3. Trigger → paste the URL of the Approvals table. Config → `qboRealmId`, `qboItemMap`, `ownerName` (exactly as the owner types it in the Reviewer box), `ownerOnlyAboveUSD` (5000).
+4. To order: open an Approved `ApproveSupplierQuote` row in Airtable and type the quantity in **OrderQty_m3**. Within 15 minutes you get the PO approval on Telegram.
+
+Flow: Airtable trigger → Load All Suppliers → **Build PO Pack** (Code: supplier, vendor ID, species, quantity ≤ 110% of offer, totals) → PO Pack OK? → **Procurement Agent** review → Approval (Pending) → **Telegram approval** (over USD 5,000: owner only) → **QBO – Find PO by DocNumber** → Create PO (or link the existing one) → Quote → LinkedPO → Approval → Approved → Telegram: "Send the PO; on delivery use *Copy to bill* with the received m³" → AuditLog.
+
+**W8 – Payments Matching** (after Week 12, or Week 11 if invoicing is stable)
+1. Add a Sheets tab **BankLines** with the headers in Section 2 (B2).
+2. Config → `qboRealmId`. Credentials in every node.
+3. Each working day, paste new statement lines into BankLines (Status empty).
+
+Flow: weekdays 17:00 → Read BankLines → **Pending Bank Lines** (Code) → Load Open Invoices (Orders: Invoiced, no PaymentID) → Build Match Pack → **Payments Agent** proposes matches → Telegram daily summary (unmatched + escalations) → **One Item per Proposed Match** (Code: confidence ≥ 0.5, allocation, currency and customer checks, QuickBooks body) → **Telegram approval per match** → QBO – Create Payment → BankLine → Applied (so it is never proposed twice) → Order → Paid (or stays Invoiced if part-paid) → AuditLog. A Denied, Need-More-Info or timed-out match, or one with a currency or customer problem, is marked `Manual: …` in BankLines for you to handle.
+
+**W9 – Weekly Reconciliation**
+1. Config → `qboRealmId`, `ownerEmail`. Credentials in every node → Activate.
+
+Flow: Monday 08:00 → Load All Orders → **QBO – Open Invoices** → Load Open Errors → **Find Exceptions** (Code: sales without a ZRA number > 48 h, orders with no QuickBooks invoice, QuickBooks invoices with no order, "Paid" orders still open in QuickBooks, overdue aging 1–30 / 31–60 / 61–90 / 90+, open errors) → **Reconciliation Agent** → Gmail report to owner (subject starts "URGENT" if needed) + **Gmail reminder drafts** to customers with an email on the order → AuditLog.
 
 **W0 – Error Handler**: pick the Airtable, Telegram and Sheets credentials → Save. It does not need to be Active. It runs whenever another workflow names it as its Error Workflow.
 

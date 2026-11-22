@@ -103,8 +103,9 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
 - **Tasks:**
   1. Answer W4 approvals for real: Approve, Deny or Need More Info.
   2. Check that "Need More Info" produces a sensible supplier draft and send it.
-  3. Build the Procurement Agent as a copy of W2's pattern if you are ready (optional; otherwise create POs by hand from the Approved rows).
-- **Deliverable:** First Approved supplier quote leading to a purchase.
+  3. Import **W7 Procurement** (Section 4.3), add the 4 new Airtable fields, and create your suppliers as QuickBooks vendors. Order once: type `OrderQty_m3` on an approved quote and approve the PO on Telegram.
+  4. Test the safeguard: type a quantity above the supplier's offered volume. It must be blocked with ⛔.
+- **Deliverable:** First QuickBooks purchase order created from an approved quote.
 - **Go/No-Go:** Go if decisions take you under 2 minutes each and no red flag was missed.
 - **Time:** 4 h.
 
@@ -112,8 +113,9 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
 - **Goal:** A Friday 16:00 email with all KPIs.
 - **Tasks:**
   1. Import W5 (sync) and build the Dashboard tab (Section 10).
-  2. Create the Reporting workflow: Schedule (cron `0 16 * * 5`) → Sheets Get Rows (Dashboard) → AI Agent with `prompts/reporting-agent.md` and output parser → Gmail Send to you → AuditLog with `Agent = Reporting Agent`, `Action = SendWeeklyReport`. Copy the agent, model and parser nodes from W3 to save time.
-  3. Read the first report and check 5 numbers by hand.
+  2. Import **W6 Weekly Report**, set `ownerEmail` and run it once by hand (**Test workflow**). Then activate it, and it runs every Friday at 16:00.
+  3. Import **W9 Weekly Reconciliation**, set `ownerEmail`, and activate it. It runs every Monday at 08:00.
+  4. Read the first report and check 5 numbers by hand.
 - **Deliverable:** First weekly report received.
 - **Go/No-Go:** Go if all 5 spot-checked numbers match.
 - **Time:** 5 h.
@@ -141,4 +143,10 @@ Rhythm: build early in the week, test mid-week, and decide Go or No-Go on Friday
 - **Go/No-Go:** Program complete if the owner can be offline for 48 h without anything breaking.
 - **Time:** 4 h.
 
-**Total:** about 60 hours over 12 weeks, or about 5 h a week.
+### After Day 90 — Payments Agent (W8)
+- **Goal:** Bank and mobile-money receipts are matched to invoices with one tap each.
+- **Tasks:** Import W8, create the BankLines tab, and paste statements daily for 2 weeks while also recording payments by hand as before (shadow mode: answer every approval "Deny" with Notes "shadow"). Then approve for real.
+- **Go/No-Go:** Go when 2 weeks of proposals had 0 wrong matches at ≥ 0.8 confidence.
+- **Time:** 4 h setup, then 5 min a day.
+
+**Total:** about 60 hours over 12 weeks, or about 5 h a week, plus about 4 h for Payments afterwards.

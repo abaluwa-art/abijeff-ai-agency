@@ -75,10 +75,10 @@
 | # | Agent | Trigger | Writes to | HITL (Telegram) | MVP? |
 |---|-------|---------|-----------|-----------------|------|
 | 1 | Sourcing | Gmail label "Suppliers" | Suppliers, Approvals | Approve supplier quote | ✅ W4 |
-| 2 | Procurement | Approvals: ApproveSupplierQuote | QBO Purchase Order / Bill | Every PO and bill | Phase 2 |
+| 2 | Procurement | Approvals: ApproveSupplierQuote | QBO Purchase Order (bill via *Copy to bill*) | Every PO | ✅ W7 |
 | 3 | Inventory | Daily 07:00 CAT | Approvals (SourcingTask) | None (read-only) | ✅ W3 |
 | 4 | Sales/Leads | Gmail label "Inquiries" | Leads, Gmail Drafts | Owner sends each draft | ✅ W1 |
 | 5 | Invoicing | Orders Status = ReadyToInvoice | QBO Invoice, Orders | Every invoice | ✅ W2 |
-| 6 | Payments | Bank feed / statement CSV | QBO Payment | Every match | Phase 2 |
-| 7 | Reconciliation | Monday 08:00 CAT | Report only | None (report) | Phase 2 |
-| 8 | Reporting | Friday 16:00 CAT | Email to owner | None (report) | Week 10 |
+| 6 | Payments | Bank feed / statement CSV | QBO Payment, Orders → Paid | Every match | ✅ W8 |
+| 7 | Reconciliation | Monday 08:00 CAT | Report + Gmail reminder drafts | None (report) | ✅ W9 |
+| 8 | Reporting | Friday 16:00 CAT | Email to owner | None (report) | ✅ W6 |

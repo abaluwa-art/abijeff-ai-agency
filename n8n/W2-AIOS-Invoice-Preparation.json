@@ -28,7 +28,7 @@
           "formula": "{Status}='ReadyToInvoice'"
         }
       },
-      "id": "0d1a34ee-5f26-421a-8284-9517b6e3f99a",
+      "id": "2068f297-95d5-43bf-b5ae-f7f75d64a9e1",
       "name": "Airtable Trigger – ReadyToInvoice",
       "type": "n8n-nodes-base.airtableTrigger",
       "typeVersion": 1,
@@ -44,61 +44,61 @@
         "assignments": {
           "assignments": [
             {
-              "id": "b896f569-a306-42a8-9399-edc9b3d20380",
+              "id": "71254e9d-e51f-42e1-a764-7c3e390e9d49",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "4e9ee5ae-26be-4295-a257-f97b5ecc6cea",
+              "id": "1cd43e77-cf6f-438c-ad55-11ea5cd63e4d",
               "name": "businessName",
               "value": "Abijeff Investments Limited",
               "type": "string"
             },
             {
-              "id": "b46774df-79a7-4650-a8e8-390c2c1877f9",
+              "id": "7190b3f4-c5b8-4799-8c89-1803f7f3b3c3",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "0dbbfbbe-8b0c-4431-86e0-714ed0c8b713",
+              "id": "058181b1-8c72-4fdd-a6e3-cbbb7cf13c7d",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
             },
             {
-              "id": "9bde0cd7-631b-45c5-bd19-534fb47f789e",
+              "id": "ad9b9aa8-1048-4993-a34a-177652463bdc",
               "name": "vatRate",
               "value": 16,
               "type": "number"
             },
             {
-              "id": "badd3b32-301c-44c9-9a81-2ff43857ca70",
+              "id": "9618f50c-8068-45a7-8dcd-4d55940fd4d1",
               "name": "vatEffectiveDate",
               "value": "",
               "type": "string"
             },
             {
-              "id": "71ade7b0-6393-4819-949b-6c6cf6914581",
+              "id": "8b636a96-1296-4a3b-829b-3fa391406d1a",
               "name": "qboRealmId",
               "value": "9341453050123456",
               "type": "string"
             },
             {
-              "id": "9f14b96c-b1e2-499c-b0f0-867fa765be2a",
+              "id": "92c05672-73b3-4596-9caf-5cff086e6441",
               "name": "qboBaseUrl",
               "value": "https://quickbooks.api.intuit.com",
               "type": "string"
             },
             {
-              "id": "5baf7034-d9a9-4108-95c8-5b91a04e1732",
+              "id": "47d0a885-5ea6-4e56-a0e3-a76926fd48f5",
               "name": "qboVatTaxCodeId",
               "value": "5",
               "type": "string"
             },
             {
-              "id": "9584abac-4d1c-4c0d-8499-8989ccb2f2ee",
+              "id": "ad5db059-9f1d-4c2b-815a-b07636420e85",
               "name": "qboItemMap",
               "value": "{\"Rosewood\":\"21\",\"Teak\":\"22\",\"Mahogany\":\"23\",\"Kiaat\":\"24\"}",
               "type": "string"
@@ -108,7 +108,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "1942b68d-fed2-426a-8a7e-e1d874ee3460",
+      "id": "981cd563-d073-46f2-9a0e-ec9372967359",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -130,7 +130,7 @@
           },
           "conditions": [
             {
-              "id": "56cdf773-ad80-470e-a0da-9cf0d1fb2b4b",
+              "id": "b77326ef-b2d7-40d8-9edc-b3af30c3c712",
               "leftValue": "={{ $json.fields.InvoiceID }}",
               "operator": {
                 "type": "string",
@@ -140,7 +140,7 @@
               "rightValue": ""
             },
             {
-              "id": "fc5dc916-218b-4089-b329-63a38209ddf2",
+              "id": "68a22c43-0bbc-4a6f-8049-f2e4eea6991f",
               "leftValue": "={{ $json.fields.ZRA_InvoiceNo }}",
               "operator": {
                 "type": "string",
@@ -155,7 +155,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "4814d7fc-c872-421a-8523-9042d448f613",
+      "id": "3fa5b550-2ebf-401c-a07e-59bd22a33e38",
       "name": "Already Invoiced?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -171,73 +171,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f7f6c2da-6df1-4ba7-82f9-fe3748f57fc0",
+              "id": "1db2c5f2-7bba-47c1-b732-2faca1146395",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "c653fa87-79ca-4185-b297-bbcfabb86510",
+              "id": "64c83144-2c8f-4e5f-b5ee-8bd471d7c421",
               "name": "Action",
               "value": "SkipAlreadyInvoiced",
               "type": "string"
             },
             {
-              "id": "8d742cb3-9ea3-42c7-8030-d2135d55ec88",
+              "id": "0b6ce525-501c-415b-986a-08e4a986352f",
               "name": "RecordID",
               "value": "={{ $json.fields.OrderID }}",
               "type": "string"
             },
             {
-              "id": "c0534385-230d-4f5d-9663-73a324131002",
+              "id": "8a193ad1-f798-4e88-869b-0aa0e33cd27f",
               "name": "InputSummary",
               "value": "Order already has InvoiceID/ZRA_InvoiceNo",
               "type": "string"
             },
             {
-              "id": "8fa74047-237e-4de0-9b78-a2da706e0792",
+              "id": "b7860fd5-e91b-4777-bf45-64f63d9baba0",
               "name": "OutputSummary",
               "value": "={{ 'Skipped. InvoiceID=' + ($json.fields.InvoiceID || '') }}",
               "type": "string"
             },
             {
-              "id": "7ab3d5a7-a5c1-4aeb-9be3-56cc3bc68213",
+              "id": "f51c8245-ed82-4b8d-8831-81b5cb81f30c",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "05c82cb8-b9f5-47d0-b036-c0c37630965b",
+              "id": "fa116c36-3ab3-43ec-a9fb-931572b324d1",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "14e892ba-2c57-457d-bc6b-dbfc5792942a",
+              "id": "d0a73782-d9cd-44ee-a331-54991e6ee7b8",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "f728127b-0ef1-4511-b2dc-acc7a8b81438",
+              "id": "3cfdc192-1d06-40a1-b541-83130c40b547",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "8560bd6d-fe46-482b-b60e-195968e6db0d",
+              "id": "f299d7c0-b58b-47a0-bb8f-430081d35e9d",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "9c9fd43d-9ab6-481f-addf-9002a85d0eb3",
+              "id": "78e830e6-d68e-4f98-b9bc-096c3becab12",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "e76c6dcf-31cb-48fd-9828-8411fcb8fcee",
+              "id": "d63c005c-9de6-4b5d-a8f7-7ece52d89cef",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -246,7 +246,7 @@
         },
         "options": {}
       },
-      "id": "5dfae2f1-b19f-4b31-baa0-1aedb2aa6102",
+      "id": "dc9ac26b-dd4d-4420-b769-f6a1e07fd6cf",
       "name": "Audit – Already Invoiced",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -260,7 +260,7 @@
         "mode": "runOnceForAllItems",
         "jsCode": "// Deterministic pre-flight checks and maths. The LLM never does arithmetic.\nconst cfg = $('Config').first().json;\nconst ALLOWED = ['Rosewood', 'Teak', 'Mahogany', 'Kiaat'];\nconst out = [];\nfor (const item of $input.all()) {\n  const rec = item.json;\n  const f = rec.fields || {};\n  const issues = [];\n  const tpin = String(f.TPIN || '').replace(/\\D/g, '');\n  if (!/^\\d{10}$/.test(tpin)) issues.push('Buyer TPIN missing or not 10 digits (value: \"' + (f.TPIN || '') + '\")');\n  if (f.DeliveryConfirmed !== true) issues.push('DeliveryConfirmed is not ticked');\n  if (!f.QBO_CustomerID) issues.push('QBO_CustomerID is empty (create/find the customer in QuickBooks first)');\n  const currency = (f.InvoiceCurrency || 'ZMW').toUpperCase();\n  if (!['ZMW', 'USD'].includes(currency)) issues.push('InvoiceCurrency must be ZMW or USD');\n  const fx = Number(f.FXRate || 0);\n  if (!(fx > 0)) issues.push('FXRate (ZMW per USD) is empty');\n  let items = [];\n  try { items = JSON.parse(f.LineItems || '[]'); } catch (e) { issues.push('LineItems is not valid JSON'); }\n  if (!Array.isArray(items) || items.length === 0) issues.push('No line items');\n  const lines = [];\n  for (const [i, li] of (Array.isArray(items) ? items : []).entries()) {\n    const qty = Number(li.qty_m3), usd = Number(li.unit_price_usd);\n    if (!ALLOWED.includes(li.species)) issues.push(`Line ${i + 1}: species \"${li.species}\" not in master list`);\n    if (!(qty > 0)) issues.push(`Line ${i + 1}: qty_m3 must be > 0`);\n    if (!(usd > 0)) issues.push(`Line ${i + 1}: unit_price_usd must be > 0`);\n    const unit = currency === 'USD' ? usd : Math.round(usd * fx * 100) / 100;\n    lines.push({ sku: li.sku || '', species: li.species, grade: li.grade || '', description: li.description || `${li.species} ${li.grade || ''}`.trim(),\n                 qty_m3: qty, unit_price: unit, line_total: Math.round(qty * unit * 100) / 100 });\n  }\n  const vatRate = Number(cfg.vatRate);\n  // VAT may only be charged from the effective date on the ZRA VAT registration certificate.\n  const vatFrom = String(cfg.vatEffectiveDate || '').trim();\n  const today = $now.setZone('Africa/Lusaka').toFormat('yyyy-MM-dd');\n  if (vatRate > 0 && (!/^\\d{4}-\\d{2}-\\d{2}$/.test(vatFrom) || today < vatFrom))\n    issues.push(`VAT is set to ${vatRate}% but VAT registration is not effective yet (Config vatEffectiveDate = \"${vatFrom}\"). Set the date from the ZRA VAT certificate, or set vatRate to 0 until then`);\n  const subtotal = Math.round(lines.reduce((s, l) => s + l.line_total, 0) * 100) / 100;\n  const vat = Math.round(subtotal * vatRate) / 100;\n  const total = Math.round((subtotal + vat) * 100) / 100;\n  const recorded = currency === 'USD' ? Number(f.TotalUSD || 0) : Number(f.TotalZMW || 0);\n  if (recorded > 0 && Math.abs(recorded - total) / total > 0.01) issues.push(`Recorded total ${recorded} differs from calculated ${total} by more than 1%`);\n  const itemMap = JSON.parse(cfg.qboItemMap);\n  const qboBody = {\n    DocNumber: String(f.OrderID).slice(0, 21),\n    TxnDate: $now.setZone('Africa/Lusaka').toFormat('yyyy-MM-dd'),\n    CustomerRef: { value: String(f.QBO_CustomerID || '') },\n    CurrencyRef: { value: currency },\n    GlobalTaxCalculation: 'TaxExcluded',\n    PrivateNote: `AIOS order ${f.OrderID}. Fiscal invoice to be issued via ZRA Smart Invoice. Buyer TPIN ${tpin}.`,\n    CustomerMemo: { value: `Buyer TPIN: ${tpin}. Order ${f.OrderID}.` },\n    Line: lines.map(l => ({\n      DetailType: 'SalesItemLineDetail', Amount: l.line_total, Description: `${l.description} (${l.qty_m3} m³)`,\n      SalesItemLineDetail: { ItemRef: { value: String(itemMap[l.species] || '') }, Qty: l.qty_m3, UnitPrice: l.unit_price,\n                             TaxCodeRef: { value: String(cfg.qboVatTaxCodeId) } }\n    })),\n  };\n  if (currency === 'USD') qboBody.ExchangeRate = fx;\n  out.push({ pairedItem: { item: out.length }, json: {\n    recordId: rec.id, orderId: f.OrderID, customerName: f.CustomerName, tpin, currency, fx,\n    deliveryConfirmed: f.DeliveryConfirmed === true, lines, vatRatePct: vatRate, subtotal, vat, total,\n    recordedTotalUSD: Number(f.TotalUSD || 0), recordedTotalZMW: Number(f.TotalZMW || 0),\n    ok: issues.length === 0, issues, issuesText: issues.join('; '), qboBody,\n  } });\n}\nreturn out;"
       },
-      "id": "78bc7d2c-eecd-491f-b1f7-cca04ac55558",
+      "id": "ccc419df-bb2a-4eaf-88b8-e7556e6b9d18",
       "name": "Pre-flight Checks & Maths",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
@@ -282,7 +282,7 @@
           },
           "conditions": [
             {
-              "id": "f324e845-b63e-46bc-9779-c642cd3a2590",
+              "id": "ca948a06-8f81-4580-82ba-ca2b690d7f5b",
               "leftValue": "={{ $json.ok }}",
               "operator": {
                 "type": "boolean",
@@ -297,7 +297,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "bc41bf1d-4f97-43f5-a0a8-8af4845639c4",
+      "id": "53a8e20e-4ce7-4531-b1eb-71ae8f75dd85",
       "name": "Pre-flight Passed?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -311,25 +311,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "f10ad39e-df1f-4f1a-aa37-aebecb6f71af",
+              "id": "d0effb73-d8d9-4ce7-80f7-0affbc4ce7bc",
               "name": "orderId",
               "value": "={{ $json.orderId }}",
               "type": "string"
             },
             {
-              "id": "ae6251e3-27dd-45d4-b1e7-6566b5a2eb66",
+              "id": "59d9f423-7733-406f-ae0a-256cbe6b9271",
               "name": "recordId",
               "value": "={{ $json.recordId }}",
               "type": "string"
             },
             {
-              "id": "c86c460c-b93c-4db9-9706-62d76ba29578",
+              "id": "b9d677ec-6d97-47ae-87c7-aedfa71a55aa",
               "name": "issuesText",
               "value": "={{ $json.issuesText }}",
               "type": "string"
             },
             {
-              "id": "c964dd4e-936c-4bd9-852e-7f9e8c405282",
+              "id": "1c4decba-1b46-4cd3-ad8b-d3bde727eafb",
               "name": "source",
               "value": "Pre-flight checks",
               "type": "string"
@@ -338,7 +338,7 @@
         },
         "options": {}
       },
-      "id": "11b26726-89c5-4d22-9d54-923d9b28d6f8",
+      "id": "f4c117fe-b726-4b5d-b933-54e7951c18af",
       "name": "Collect Issues (pre-flight)",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -357,7 +357,7 @@
           "maxIterations": 3
         }
       },
-      "id": "97f5e652-e20c-4a24-997d-69469eac4aed",
+      "id": "d2388622-b9f3-4256-83f6-dd6a916920cf",
       "name": "Invoicing Agent",
       "type": "@n8n/n8n-nodes-langchain.agent",
       "typeVersion": 2.2,
@@ -384,7 +384,7 @@
           "maxRetries": 2
         }
       },
-      "id": "cbf12f5b-b591-45ff-8984-a31baa73a78e",
+      "id": "088b32d6-7357-4f89-a400-82efa6c66512",
       "name": "OpenAI gpt-4o-mini",
       "type": "@n8n/n8n-nodes-langchain.lmChatOpenAi",
       "typeVersion": 1.2,
@@ -401,7 +401,7 @@
         "sessionKey": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
         "contextWindowLength": 6
       },
-      "id": "c5de96cf-acd4-4e41-a007-e4e254151d3b",
+      "id": "2d6892f4-adea-41c1-adf8-cdf94dc9e954",
       "name": "Memory – Order",
       "type": "@n8n/n8n-nodes-langchain.memoryBufferWindow",
       "typeVersion": 1.3,
@@ -418,7 +418,7 @@
         "jsonSchemaExample": "{\n  \"valid\": true,\n  \"risk_level\": \"low\",\n  \"issues\": [\n    \"example issue\"\n  ],\n  \"approval_summary\": \"Buyer: Chongwe Builders Ltd (TPIN 1003456789)\\n4.5 m3 Teak KD @ ZMW 24,990\\nSubtotal ZMW 112,455.00\\nVAT 16% ZMW 17,992.80\\nTOTAL ZMW 130,447.80\"\n}",
         "autoFix": false
       },
-      "id": "741c88c9-c68c-44d4-964e-3b308d584f49",
+      "id": "54edc8d8-cae4-4cf8-9d4a-c88fed735a27",
       "name": "Invoice Review Schema",
       "type": "@n8n/n8n-nodes-langchain.outputParserStructured",
       "typeVersion": 1.2,
@@ -438,7 +438,7 @@
           },
           "conditions": [
             {
-              "id": "3fe72f9f-9696-44d1-acfa-2e71d1bb1ab8",
+              "id": "a773a051-0ccf-42c2-9f03-764acea6e38d",
               "leftValue": "={{ $('Invoicing Agent').item.json.output.valid }}",
               "operator": {
                 "type": "boolean",
@@ -453,7 +453,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "2019c034-c839-4630-9da6-4ae29aa8e20a",
+      "id": "dc5f24b5-bbee-42c5-8e0d-487b50de37be",
       "name": "Agent Says Valid?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -467,25 +467,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "45ccbd85-d883-4c11-b294-d3f61a52b76f",
+              "id": "7d922d3c-1e1b-44c8-b6bc-7b56ab2626ed",
               "name": "orderId",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
               "type": "string"
             },
             {
-              "id": "b7e33726-4e6f-4fa0-968c-0dee49fc7e71",
+              "id": "69418f71-7189-459b-b342-fa11895dd09f",
               "name": "recordId",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.recordId }}",
               "type": "string"
             },
             {
-              "id": "e9e4a29d-6b40-4079-929c-b4852a616592",
+              "id": "743c4edd-6524-4974-966a-bf4fd97f41c8",
               "name": "issuesText",
               "value": "={{ ($('Invoicing Agent').item.json.output.issues || []).join('; ') + ' [risk: ' + $('Invoicing Agent').item.json.output.risk_level + ']' }}",
               "type": "string"
             },
             {
-              "id": "40037cd3-c8c6-4a6f-998b-7e05c145e892",
+              "id": "4cb21607-5264-433f-a08d-28a14f7e3d2b",
               "name": "source",
               "value": "Invoicing Agent review",
               "type": "string"
@@ -494,7 +494,7 @@
         },
         "options": {}
       },
-      "id": "0a762118-2b47-488f-9f0f-66dce205e921",
+      "id": "a0a7f5bb-796a-469f-a6d5-2a9352cbafa4",
       "name": "Collect Issues (agent)",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -538,7 +538,7 @@
           "typecast": true
         }
       },
-      "id": "eeded5e2-82aa-4df2-ab3c-d06c189d8c27",
+      "id": "dc130d16-49b9-46fa-9057-ddb8995b9997",
       "name": "Dead-letter: Approvals (Status=Error)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -559,7 +559,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "15ed8ac6-c10e-423b-a6a9-52b4d2d1aacf",
+      "id": "4bfff359-9de6-42ba-9008-777c70f2192e",
       "name": "Telegram – Invoice Blocked",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -576,73 +576,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "45fdb6bb-63fd-49b0-a32f-378abd0e58cb",
+              "id": "ac07290a-aa12-485a-87e7-aef85e660a8c",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "26d5228d-6d18-4791-96f7-a1a5333e5c2c",
+              "id": "68e0c680-d3ca-47de-b299-87744dc81c49",
               "name": "Action",
               "value": "BlockInvoice",
               "type": "string"
             },
             {
-              "id": "544280b3-3985-4506-ba46-99c1d3917caa",
+              "id": "354f25e9-d34f-4150-98bc-eaaee81046b8",
               "name": "RecordID",
               "value": "={{ $('Dead-letter: Approvals (Status=Error)').item.json.fields.OrderID }}",
               "type": "string"
             },
             {
-              "id": "f2030c25-8856-4dc8-b6ba-5b739a4fe22d",
+              "id": "4f744b30-8edf-4285-8023-833572a82d7d",
               "name": "InputSummary",
               "value": "Pre-flight / agent review",
               "type": "string"
             },
             {
-              "id": "2ac791df-1006-4b7a-a3d3-b1e9279bb3b2",
+              "id": "c449e75d-a7e2-4149-9bd9-a1e1316da7f2",
               "name": "OutputSummary",
               "value": "={{ $('Dead-letter: Approvals (Status=Error)').item.json.fields.DenialReason }}",
               "type": "string"
             },
             {
-              "id": "47fca60e-83a1-47d9-8958-1baccce661e2",
+              "id": "88501b49-7608-41b2-a4f6-4a73c22507a0",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "c344cfd5-a7e0-4e80-9491-5b81458dc10f",
+              "id": "0cc04baa-b599-4414-8785-3abc657d8e9d",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "79bfb3e1-5e79-484c-95a7-31fefc120e8b",
+              "id": "395d2c8b-4679-4a1f-a90a-445bf97d1d9a",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "aa19d754-c95d-4bcd-81c3-1ff1220fcee8",
+              "id": "f03c1cb4-72f3-4a7b-bde1-ddd4fba842eb",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "ff50f360-2086-4eaa-8acc-a3e5d53cd379",
+              "id": "02c6bc81-1455-414d-a1eb-19eb5494a073",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "1b3c6e8c-ee89-4bc7-871c-038f8e96b81f",
+              "id": "ae70d355-9b68-4b6c-9be9-4e3a34912ea5",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "c1c6f613-2851-4a28-88e0-5deda047e102",
+              "id": "69ac835c-cfb3-4f5d-9084-cf7d374bfa84",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -651,7 +651,7 @@
         },
         "options": {}
       },
-      "id": "b3ff9a64-2976-4f6f-82a8-181708c9abdf",
+      "id": "9d9a5fed-ebf7-4cc7-b2e9-bdf331572ae8",
       "name": "Audit – Invoice Blocked",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -694,7 +694,7 @@
           "typecast": true
         }
       },
-      "id": "1b4c6789-5261-41c8-92ec-a3b49dfca51d",
+      "id": "3a04a69a-62b9-41f1-a1b2-e0018f01a9d3",
       "name": "Create Approval Record (Pending)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -759,7 +759,7 @@
           }
         }
       },
-      "id": "c0843bec-76fd-4488-b7b8-91049373b140",
+      "id": "2147b4f6-3bd6-4dc9-a28e-6a8d567eca8a",
       "name": "Telegram – Request Approval",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -781,7 +781,7 @@
           },
           "conditions": [
             {
-              "id": "39120116-08c9-4294-9d19-7b4504c2da85",
+              "id": "10e249b9-d072-4a4e-881b-5692654057ef",
               "leftValue": "={{ $json.data.Decision }}",
               "operator": {
                 "type": "string",
@@ -795,7 +795,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "e44336a8-fd89-4a0a-b18c-6da719342f30",
+      "id": "3417a87c-db3b-4828-82a7-2bb1217f7b0b",
       "name": "Approved?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -815,7 +815,7 @@
           },
           "conditions": [
             {
-              "id": "a7135b59-b00b-413d-8a57-9c483a894a8d",
+              "id": "83ff426c-fb81-4005-8252-c38b56a09d2a",
               "leftValue": "={{ $json.data.Decision }}",
               "operator": {
                 "type": "string",
@@ -829,7 +829,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "3c7eb92f-6d02-4633-b277-53f8a5c54760",
+      "id": "54a847c3-8e2c-4284-8768-b88d655d5831",
       "name": "Denied?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -873,7 +873,7 @@
           "typecast": true
         }
       },
-      "id": "d3e04d42-09f2-481b-b5d5-b1861500ca91",
+      "id": "6e45c237-6628-4229-876f-8829ac666d4c",
       "name": "Approval → Denied",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -917,7 +917,7 @@
           "typecast": true
         }
       },
-      "id": "af95e961-9157-4e3e-8ce6-d554438ee0d3",
+      "id": "b5ed35f3-330d-41f5-8cfe-2fd507b264fc",
       "name": "Order → Confirmed (stop loop)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -936,73 +936,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "ae7cae7e-7f1e-42cc-a3ad-ec3263217526",
+              "id": "de230533-0d3b-4e4e-b5fa-892c63e1431a",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "61ac4e95-d61b-4da1-bd9c-6b5a21d4a7b0",
+              "id": "4ebe9b35-32da-42ab-a910-eb4b6e765370",
               "name": "Action",
               "value": "InvoiceDenied",
               "type": "string"
             },
             {
-              "id": "156eaff3-f110-4811-a89d-78a222e4a522",
+              "id": "2c156fc8-570d-46e1-92c7-1ad2daa2513c",
               "name": "RecordID",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
               "type": "string"
             },
             {
-              "id": "78c73740-21a6-4ae1-b636-546742e8082a",
+              "id": "5ccbb864-5d19-4f20-8703-c81a6598b1b3",
               "name": "InputSummary",
               "value": "Owner denied invoice",
               "type": "string"
             },
             {
-              "id": "94a26545-fbbd-4ae8-b8f2-e18e3aaa8923",
+              "id": "851c3dd1-b054-4316-a1c5-6dd47c952c11",
               "name": "OutputSummary",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Notes || '' }}",
               "type": "string"
             },
             {
-              "id": "42495044-c7d0-483e-a4bd-1201ed080aaf",
+              "id": "2acef85a-1c3f-4ddf-9ce6-57161a7cf8d4",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "312b65b7-1621-4e18-bbeb-6141b100ce87",
+              "id": "4c95a198-6ca1-4429-bf8b-09a5c946658a",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "03421e25-b626-4db9-a4d2-fc0e45845433",
+              "id": "a9448564-1d37-4665-b7b9-eae9005864c5",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "2ce18172-fb83-44e2-b94d-ddb255850d72",
+              "id": "20d158e9-4931-49fb-8406-668b752c5ddc",
               "name": "InputTokens",
               "value": "={{ Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "765c9674-a330-4c76-8712-60154ab41683",
+              "id": "51b35c52-a324-48a0-9177-83683b9ad47f",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "12a795d5-df39-4ed1-baf1-32763653ec3f",
+              "id": "185ead76-1602-497f-8c88-2f906105f74f",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "e3467880-200c-426c-b229-94ab16e9acfa",
+              "id": "c5ed407a-2bfa-4e14-a26d-3b43dc309912",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -1011,7 +1011,7 @@
         },
         "options": {}
       },
-      "id": "45447097-fc0f-4ca9-ae9c-e94645bc8cef",
+      "id": "1b0ccdf8-16bf-40fe-91ef-18d6d6c2eaa4",
       "name": "Audit – Denied",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1055,7 +1055,7 @@
           "typecast": true
         }
       },
-      "id": "8847a986-8fed-43b1-a179-228b29fbbe98",
+      "id": "4526d27e-b02f-42c7-9bee-d83efa53c488",
       "name": "Approval → NeedsInfo",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -1076,7 +1076,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "6d785c6e-264a-448b-8b2b-c7b7d3cd48f6",
+      "id": "16aaa3c7-e327-4f24-9351-f393b9a736e6",
       "name": "Telegram – Info Requested",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1093,73 +1093,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "d7a6f381-eaf1-4606-8925-2592e2bc4f8d",
+              "id": "312d5752-9340-47cf-adfd-d746defda9f4",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "5b60ca82-585b-4135-918a-1ef30caaeb2c",
+              "id": "5a6d60d9-8f28-4759-91d4-ffca29c086f4",
               "name": "Action",
               "value": "InvoiceNeedsInfo",
               "type": "string"
             },
             {
-              "id": "15593575-bfe7-4b63-84ce-6076935ba412",
+              "id": "120b41df-f7d2-4ef4-bc16-bd940c884b4e",
               "name": "RecordID",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
               "type": "string"
             },
             {
-              "id": "c57a462e-2d6f-49c6-a5cc-92c23c2284ab",
+              "id": "e67ca0be-5c6a-4b16-bfa0-a03e4bc985b8",
               "name": "InputSummary",
               "value": "Owner requested more info",
               "type": "string"
             },
             {
-              "id": "eeada066-ca47-4e33-89af-53949f38d68e",
+              "id": "07b54cb0-b9e1-48b5-aa88-91d9da038777",
               "name": "OutputSummary",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Notes || '' }}",
               "type": "string"
             },
             {
-              "id": "8a7e4a65-61a5-44e7-83d2-e32e8f45ab76",
+              "id": "4cd71477-ad09-4e67-82d2-4b686a4f41e5",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "08b9070a-9e8d-4819-a946-4a70eddd2549",
+              "id": "a352553a-1572-46e0-b097-2cf5eb986477",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "cde972c8-efa0-4ba1-a0bd-2fb33afb1761",
+              "id": "91bac5a2-aa7c-4344-8bbe-4d642cc8cab8",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "c0deb7fc-73d4-4ed5-aa68-0daaa1950346",
+              "id": "46ae5f1a-07f0-409b-8d5f-46029f8aab63",
               "name": "InputTokens",
               "value": "={{ Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "cb863fe2-002b-4adc-a248-7c0486f22f9b",
+              "id": "cd007993-9199-444b-aec1-ad018295cd7f",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "ee4194e7-8b85-413f-ad92-e4620fd64247",
+              "id": "17999045-325e-40e6-9d93-c9f06a45095d",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "6de734a3-3e6b-4d12-b14e-8045a1ca33d9",
+              "id": "1bc8e9b4-2195-47bb-b1dd-93e8dcc4de34",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -1168,7 +1168,7 @@
         },
         "options": {}
       },
-      "id": "b9d6f74f-1e19-4b30-a05c-86a9e10ebff7",
+      "id": "b20703c4-f377-4dea-9787-c85d4c47b018",
       "name": "Audit – Needs Info",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1209,7 +1209,7 @@
           "timeout": 30000
         }
       },
-      "id": "79bd616e-f571-4c4d-ad02-a63c3c271818",
+      "id": "12dfac6f-1442-412a-b44d-3c21005f66a7",
       "name": "QBO – Find Invoice by DocNumber",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1234,7 +1234,7 @@
           },
           "conditions": [
             {
-              "id": "24b12841-a77e-4d0d-8f4f-ce411646fc6c",
+              "id": "39a8fff2-5853-4e09-9ba8-85ebd4113fa2",
               "leftValue": "={{ ($json.QueryResponse?.Invoice || []).length }}",
               "operator": {
                 "type": "number",
@@ -1248,7 +1248,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "180b2c5c-20d8-4c21-958a-f35493931021",
+      "id": "2c0bfd88-fda8-4d79-8ac6-586660c0a0ee",
       "name": "Invoice Exists in QBO?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -1266,7 +1266,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "13e7e22a-96aa-4f51-9b14-775d984a40c1",
+      "id": "7812d6dd-5a37-4069-8f64-a646454764bb",
       "name": "Telegram – Duplicate Prevented",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1311,7 +1311,7 @@
           "typecast": true
         }
       },
-      "id": "18fc505f-7be9-4484-9b97-3ad7eea41e43",
+      "id": "5727e085-354d-485a-972e-7995b0bfa19d",
       "name": "Order → Link Existing Invoice",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -1328,73 +1328,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "507b331f-c15a-4011-9880-d7f3081c193c",
+              "id": "3bed0bea-e23d-44f5-bc88-a836a9e795e3",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "92c0d7e9-4b00-4941-9908-e90c678607dd",
+              "id": "a536523a-b5b5-4145-9463-ed9f031d522a",
               "name": "Action",
               "value": "DuplicatePrevented",
               "type": "string"
             },
             {
-              "id": "e554ecda-c871-4c56-b2c6-61fef88216d8",
+              "id": "15bd0ebf-6174-4fb8-bb15-85bf930c92f7",
               "name": "RecordID",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
               "type": "string"
             },
             {
-              "id": "4836d6ac-f133-4ca9-8db8-b8dab4e8b452",
+              "id": "70bb71cd-0deb-433f-8ebb-26de629e3932",
               "name": "InputSummary",
               "value": "QBO query by DocNumber",
               "type": "string"
             },
             {
-              "id": "6efdb3dc-c542-4d43-9522-2680a5ae027c",
+              "id": "8af7c309-8663-4fde-ab90-11ac90a72c7c",
               "name": "OutputSummary",
               "value": "Existing invoice linked; none created",
               "type": "string"
             },
             {
-              "id": "94d980bf-1e2c-48e9-9060-a554e9a6765b",
+              "id": "84b99c11-8b76-421e-bb5f-42f8bd3e11b8",
               "name": "HumanApproved",
               "value": "TRUE",
               "type": "string"
             },
             {
-              "id": "1a72a04d-da12-45cd-b21c-3390cc2f6586",
+              "id": "dfa236af-9a4e-4e94-b85b-3c4877193e5e",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "42e0479e-f510-4557-b8dc-6abf263ff8fb",
+              "id": "a02683d2-f7b9-4a29-9753-c9cec7038ed7",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "0c23d35b-b047-4577-9fba-2064f2a41a75",
+              "id": "3f431539-54f8-4f2c-93e0-82e1e26a0f68",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "b1782b47-9a7c-4588-8c7d-62a280465007",
+              "id": "bd1b594b-f602-4546-ba2c-c1ef216bd9c9",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "8cf0b584-7d89-438a-89dc-af4edccee089",
+              "id": "e776796d-5303-4c28-b2e7-dc54eef19093",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "e1d8ce97-97f8-4402-a7a3-9b996a21a4e0",
+              "id": "1f453206-827d-4a7b-8cb3-f8de7b72923b",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -1403,7 +1403,7 @@
         },
         "options": {}
       },
-      "id": "ee1fdd56-d9d6-4e26-85ef-e46c6c3e4ac6",
+      "id": "28f51c0c-0160-4f67-8b2c-fb90c88ebf31",
       "name": "Audit – Duplicate Prevented",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1443,7 +1443,7 @@
           "timeout": 30000
         }
       },
-      "id": "ffa85d40-a0e6-4414-90ac-cb11610108da",
+      "id": "df2a02f9-b708-4cff-8b67-7042a26c1cfc",
       "name": "QBO – Create Invoice",
       "type": "n8n-nodes-base.httpRequest",
       "typeVersion": 4.2,
@@ -1488,7 +1488,7 @@
           "typecast": true
         }
       },
-      "id": "ce2cec6e-7f7e-4202-9aca-98ea17757626",
+      "id": "5d2bf48f-3e29-40b5-8640-10837e7e5570",
       "name": "Order → Invoiced",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -1534,7 +1534,7 @@
           "typecast": true
         }
       },
-      "id": "aae1fe19-bbb8-454c-8149-fec6ca0dc234",
+      "id": "46091444-4018-4506-9676-67248680c06a",
       "name": "Approval → Approved",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -1555,7 +1555,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "5bb283b2-5357-421b-8802-907c001ad3e0",
+      "id": "a8c801a3-021c-463e-a7bb-533c754656dd",
       "name": "Telegram – Issue Fiscal Invoice Now",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -1572,73 +1572,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "944c5bf1-22df-4e53-84d3-ad816a477534",
+              "id": "04f48941-0dd5-417b-8d31-2e9c7a554f45",
               "name": "Agent",
               "value": "Invoicing Agent",
               "type": "string"
             },
             {
-              "id": "730f8a35-cda3-4546-a1b2-d3fb3b31a5b6",
+              "id": "48d311e9-c785-426d-bb61-7e3fe3c6bb3e",
               "name": "Action",
               "value": "CreateQBOInvoice",
               "type": "string"
             },
             {
-              "id": "1de97982-602d-4cef-91bb-1dc9dc56c220",
+              "id": "1c388bd8-786c-45b0-8b32-cfc3ff6ec288",
               "name": "RecordID",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.orderId }}",
               "type": "string"
             },
             {
-              "id": "2eb3e02b-83b2-40ab-b1bf-659771ae592d",
+              "id": "5e1eefaa-0d68-4c8e-8536-cf6f235af6cc",
               "name": "InputSummary",
               "value": "={{ $('Pre-flight Checks & Maths').item.json.currency + ' ' + $('Pre-flight Checks & Maths').item.json.total }}",
               "type": "string"
             },
             {
-              "id": "878d0e05-94d2-4026-8c4f-5d89f4e46221",
+              "id": "8c93f388-fcaa-4138-be58-884863dd735e",
               "name": "OutputSummary",
               "value": "={{ 'QBO Invoice Id ' + $('QBO – Create Invoice').item.json.Invoice.Id }}",
               "type": "string"
             },
             {
-              "id": "b70f6f6e-c5f7-4b90-a9aa-bfe9cb892f1d",
+              "id": "a2ea64f0-6937-466f-9d03-855786786e22",
               "name": "HumanApproved",
               "value": "TRUE",
               "type": "string"
             },
             {
-              "id": "87718ea3-e230-47d5-a334-a0d6ff6e18ae",
+              "id": "79d4ec25-87df-4d08-8027-1b5dde84e744",
               "name": "ApprovedBy",
               "value": "={{ $('Telegram – Request Approval').item.json.data.Reviewer }}",
               "type": "string"
             },
             {
-              "id": "6c5ae9be-f3da-4676-8813-a6ae562779d7",
+              "id": "01124301-021f-4aad-89da-29eec04e2310",
               "name": "Model",
               "value": "gpt-4o-mini",
               "type": "string"
             },
             {
-              "id": "3819a028-651c-4c2d-9fcd-4c390193672c",
+              "id": "348825e4-4bbc-429e-95ce-94432b5ef773",
               "name": "InputTokens",
               "value": "={{ Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) }}",
               "type": "number"
             },
             {
-              "id": "6c72dc50-1f5d-4720-9acb-b57b11b7686b",
+              "id": "0e71dac8-d0b7-4342-b3ec-f361ab5fcd0a",
               "name": "OutputTokens",
               "value": "={{ Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) }}",
               "type": "number"
             },
             {
-              "id": "ac127bac-bf53-4b57-b987-031f69108613",
+              "id": "98f0ceee-064f-4e0d-9ec5-d8f3fa039922",
               "name": "TokenCost",
               "value": "={{ Number(((Math.round(((JSON.stringify($('Pre-flight Checks & Maths').item.json.lines).length + 400) + 4000) / 4) * $('Config').first().json.inputCostPer1M + Math.round(JSON.stringify($('Invoicing Agent').item.json.output || {}).length / 4) * $('Config').first().json.outputCostPer1M) / 1000000).toFixed(6)) }}",
               "type": "number"
             },
             {
-              "id": "fb754e9c-20c9-40b7-a1be-20e028f83bd6",
+              "id": "c3326ef1-049a-4755-a082-ab769fa8906f",
               "name": "ErrorFlag",
               "value": "FALSE",
               "type": "string"
@@ -1647,7 +1647,7 @@
         },
         "options": {}
       },
-      "id": "787b344b-eede-44a5-8f59-f54f8d98129b",
+      "id": "77f24fa1-005b-4be4-8019-c86d8b16b662",
       "name": "Audit – Invoice Created",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -1692,7 +1692,7 @@
         },
         "options": {}
       },
-      "id": "a5877a83-54d7-43d9-9ac5-6910d77a76fa",
+      "id": "06deb676-e976-46ab-8919-e7d0e5ef9d69",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,
@@ -1717,7 +1717,7 @@
           },
           "conditions": [
             {
-              "id": "34aa5266-3f21-4c56-afa0-32e1500abc2b",
+              "id": "e86c75ea-9fb5-40f2-b971-5135aedc04c5",
               "leftValue": "={{ $json.TokenCost }}",
               "operator": {
                 "type": "number",
@@ -1731,7 +1731,7 @@
         "looseTypeValidation": true,
         "options": {}
       },
-      "id": "596b2c7a-9419-4439-ab11-3beca8290bcc",
+      "id": "2b117c99-c2da-4098-853a-46d7fc59b882",
       "name": "Agent Ran?",
       "type": "n8n-nodes-base.if",
       "typeVersion": 2.2,
@@ -1773,7 +1773,7 @@
         },
         "options": {}
       },
-      "id": "c3bb3739-73ec-4e89-b77d-2849324bf8d9",
+      "id": "678707d5-e05e-4d1e-b14a-2964a338bfa9",
       "name": "Append to TokenCosts",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,

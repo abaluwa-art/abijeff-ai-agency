@@ -33,22 +33,22 @@ Every prompt includes the same three safety habits:
 
 ### AGENT 2: Procurement Agent
 
-── **Role:** Converts an approved supplier quote into a draft Purchase Order, and after delivery into a draft QuickBooks bill for the quantity actually received.
+── **Role:** Turns an approved supplier quote, plus the quantity you choose, into a QuickBooks Purchase Order after your approval. After delivery you convert it to a bill for the quantity actually received.
 
 ── **System Prompt** (`prompts/procurement-agent.md`)
 ```text
 {{PROMPT:procurement-agent}}
 ```
-── **Tools Available:** `Airtable Trigger` (Approvals, Action = ApproveSupplierQuote, Status = Approved) · `Airtable → Get` (Suppliers) · `OpenAI Chat Model` · `Window Buffer Memory` · `Structured Output Parser` · `Telegram → Send and Wait` · `HTTP Request` (QuickBooks `purchaseorder` and `bill` endpoints, created only after approval) · `Google Sheets → Append` (AuditLog).
-── **Inputs:** Approvals rows (ApproveSupplierQuote / Approved), the Suppliers table, and goods-received notes (a "GRN_m3" number you type on the Approvals row after delivery).
-── **Outputs:** QuickBooks Purchase Order (DocNumber = `PO-` + ApprovalID) and QuickBooks Bill, both after approval. Approvals rows with Action `CreatePO` / `CreateBill`.
+── **Tools Available (workflow W7):** `Airtable Trigger` (Approvals: ApproveSupplierQuote, Approved, OrderQty_m3 > 0, LinkedPO empty) · `Airtable → Search` (all Suppliers, once) · `Code` (supplier match, quantity check, totals, QuickBooks PO body) · `OpenAI Chat Model` · `Window Buffer Memory` · `Structured Output Parser` · `Telegram → Send and Wait` · `HTTP Request` (QuickBooks `query` + `purchaseorder`) · `Airtable → Create/Update` (Approvals) · `Google Sheets → Append` (AuditLog).
+── **Inputs:** An approved supplier quote on which you have typed `OrderQty_m3`, plus the Suppliers table (`QBO_VendorID`).
+── **Outputs:** QuickBooks Purchase Order (DocNumber = `PO-` + ApprovalID, 21 characters max). The quote's `LinkedPO` is filled in, and an Approvals row with Action `CreatePO` is recorded. **Bills are made by you in QuickBooks** with *Copy to bill* on the PO, entering the received m³. That keeps the delivered quantity a human measurement.
 ── **Guardrails:** No payments, ever. No PO without a referenced approval ID. Cannot alter supplier bank details. Bill amount = received quantity × agreed price only.
-── **HITL Gate:** Telegram approval for every PO and every bill. Over USD 5,000 the **owner** must approve; the backup approver cannot.
+── **HITL Gate:** Telegram approval for every PO. Over USD 5,000 (Config `ownerOnlyAboveUSD`) the workflow only accepts an approval whose Reviewer matches Config `ownerName`. Anyone else's "Approve" parks the PO as NeedsInfo.
 ── **Escalation Rules:** Total > USD 5,000. Supplier Reliability ≤ 2. Bank details mismatch. Received quantity differs from ordered by > 5%. Missing timber or conveyance licence at delivery.
-── **Success Metrics:** (1) 100% of POs trace to an Approved sourcing record. (2) 0 duplicate POs (idempotency on DocNumber). (3) Bills match the GRN within 1%.
+── **Success Metrics:** (1) 100% of POs trace to an Approved sourcing record. (2) 0 duplicate POs (LinkedPO + QuickBooks DocNumber check). (3) Bills entered for the received quantity within 2 days of delivery.
 ── **Failure Modes & Handling:**
-   1. *QuickBooks vendor missing.* The HTTP node returns a 400 error and the Error Handler alerts you. Create the vendor in QuickBooks, then set the Approvals row back to Approved to re-run.
-   2. *Supplier delivers 18.2 m³ against 20 m³ ordered.* The difference is 9% (> 5%), so the agent escalates and the bill draft uses 18.2 m³.
+   1. *Supplier has no QBO_VendorID.* Pre-flight blocks the PO with ⛔ and writes a dead-letter row. Create the vendor in QuickBooks, copy its ID into Suppliers, then clear and retype OrderQty_m3 to retry.
+   2. *Supplier delivers 18.2 m³ against 20 m³ ordered.* You enter 18.2 m³ in *Copy to bill*. The PO stays partly open, and the Reconciliation report shows it until you close it.
    3. *Approval sits for more than 24 h.* The Telegram wait times out, the row becomes NeedsInfo, and the Friday report lists it.
 
 ---
@@ -127,7 +127,7 @@ Every prompt includes the same three safety habits:
 ```text
 {{PROMPT:payments-agent}}
 ```
-── **Tools Available:** `Schedule Trigger` (daily 17:00 CAT) · `Google Sheets → Get Rows` (tab `BankLines`, where you paste the day's statement CSV; or HTTP Request → QuickBooks `query` for bank-feed deposits) · `Airtable → Search` (Orders Status = Invoiced) · `OpenAI Chat Model` · `Structured Output Parser` · `Telegram → Send and Wait` · `HTTP Request` (QuickBooks `payment` create, after approval) · `Airtable → Update` (Orders → Paid, PaymentID).
+── **Tools Available (workflow W8):** `Schedule Trigger` (weekdays 17:00 CAT) · `Google Sheets → Get Rows` (tab `BankLines`, where you paste the day's statement) · `Code` (pending lines; allocation and QuickBooks body per match) · `Airtable → Search` (Orders Status = Invoiced) · `OpenAI Chat Model` · `Structured Output Parser` · `Telegram → Send and Wait` · `HTTP Request` (QuickBooks `payment` create, after approval) · `Airtable → Update` (Orders → Paid, PaymentID).
 ── **Inputs:** Bank or mobile-money lines and open invoices.
 ── **Outputs:** Proposed matches in Telegram. After approval, a QuickBooks payment linked to the invoice, and Orders.Status = Paid with PaymentID.
 ── **Guardrails:** Never records a payment without approval. Never refunds, writes off or messages customers. Never changes amounts.
@@ -149,7 +149,7 @@ Every prompt includes the same three safety habits:
 ```text
 {{PROMPT:reconciliation-agent}}
 ```
-── **Tools Available:** `Schedule Trigger` (Monday 08:00 CAT) · `Airtable → Search` (Orders) · `HTTP Request` (QuickBooks `query`: `select * from Invoice where Balance > '0'`) · `Google Sheets → Get Rows` (AuditLog with ErrorFlag = TRUE, BankLines unmatched) · `OpenAI Chat Model` · `Structured Output Parser` · `Gmail → Send` (report to owner only) · `Gmail → Create Draft` (customer reminders).
+── **Tools Available (workflow W9):** `Schedule Trigger` (Monday 08:00 CAT) · `Code` (finds every exception deterministically) · `Airtable → Search` (Orders, Approvals with Status = Error) · `HTTP Request` (QuickBooks `query`: `select * from Invoice where Balance > '0'`) · `Google Sheets → Get Rows` (AuditLog with ErrorFlag = TRUE, BankLines unmatched) · `OpenAI Chat Model` · `Structured Output Parser` · `Gmail → Send` (report to owner only) · `Gmail → Create Draft` (customer reminders).
 ── **Inputs:** Orders, QuickBooks open invoices, unmatched bank lines, AuditLog errors.
 ── **Outputs:** Monday email "Reconciliation – week NN". Gmail drafts of polite reminders for invoices 1–30 days overdue.
 ── **Guardrails:** Read-only for all systems. Drafts only. No write-offs or credit notes.
@@ -171,7 +171,7 @@ Every prompt includes the same three safety habits:
 ```text
 {{PROMPT:reporting-agent}}
 ```
-── **Tools Available:** `Schedule Trigger` (Friday 16:00 CAT) · `Google Sheets → Get Rows` (Dashboard, TokenCosts, TestCases) · `Airtable → Search` (Leads, Orders, Approvals for the last 7 days) · `OpenAI Chat Model` · `Structured Output Parser` · `Gmail → Send` (to the owner only) · `Telegram → Send Message` (headline).
+── **Tools Available (workflow W6):** `Schedule Trigger` (Friday 16:00 CAT) · `Google Sheets → Get Rows` (Dashboard tiles A4:E14 and trend A20:F32) · `Airtable → Search` (Leads, Orders, Approvals for the last 7 days) · `OpenAI Chat Model` · `Structured Output Parser` · `Gmail → Send` (to the owner only) · `Telegram → Send Message` (headline).
 ── **Inputs:** The Section 10 Dashboard tab plus Airtable counts.
 ── **Outputs:** Weekly email and a one-line Telegram headline.
 ── **Guardrails:** Never invents numbers (writes "n/a"). Never gives tax advice. Never recommends autonomy for invoicing or payments.

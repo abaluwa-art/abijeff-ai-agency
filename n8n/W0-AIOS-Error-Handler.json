@@ -3,7 +3,7 @@
   "nodes": [
     {
       "parameters": {},
-      "id": "acf9b335-e681-471d-aae2-a134723048b6",
+      "id": "072122c1-9b1c-4f34-90ad-b25116aaa2cf",
       "name": "Error Trigger",
       "type": "n8n-nodes-base.errorTrigger",
       "typeVersion": 1,
@@ -19,25 +19,25 @@
         "assignments": {
           "assignments": [
             {
-              "id": "b98618d5-35fc-4454-876e-eb98a18b8da7",
+              "id": "5edbbd63-be97-48f2-80a8-dcd86c09f52f",
               "name": "telegramChatId",
               "value": "123456789",
               "type": "string"
             },
             {
-              "id": "b126cba1-e9be-4475-948f-ec8e65ebe042",
+              "id": "5de4d7a5-6485-48e8-bb9c-2664a91ead95",
               "name": "businessName",
               "value": "Abijeff Investments Limited",
               "type": "string"
             },
             {
-              "id": "e2dad453-f2e3-4f1d-bf60-a5d48a7bca80",
+              "id": "7b69eea9-2e50-4ed7-8830-44d9a7961dee",
               "name": "inputCostPer1M",
               "value": 0.15,
               "type": "number"
             },
             {
-              "id": "4c61f18d-294b-4555-9a49-e1bf9fe28e89",
+              "id": "c52c2b39-4f3b-4f4b-951a-6cdd2fcb2a88",
               "name": "outputCostPer1M",
               "value": 0.6,
               "type": "number"
@@ -47,7 +47,7 @@
         "options": {},
         "includeOtherFields": true
       },
-      "id": "921318cc-ff62-4f6c-8930-f38776599a3d",
+      "id": "e652189b-e57c-4074-88b5-7997cce177c7",
       "name": "Config",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -94,7 +94,7 @@
           "typecast": true
         }
       },
-      "id": "d4f1e86f-57c0-4792-a114-625e1cff01d5",
+      "id": "e2a0f9df-8ddd-4597-9091-f1f413a22a7d",
       "name": "Dead-letter: Approvals (Status=Error)",
       "type": "n8n-nodes-base.airtable",
       "typeVersion": 2.1,
@@ -115,7 +115,7 @@
           "parse_mode": "HTML"
         }
       },
-      "id": "9c4fa05a-1b33-4e37-b457-7ca53aed2ec5",
+      "id": "7e22cac0-8f59-4f03-8317-6a63c50c0150",
       "name": "Telegram – Error Alert",
       "type": "n8n-nodes-base.telegram",
       "typeVersion": 1.2,
@@ -132,73 +132,73 @@
         "assignments": {
           "assignments": [
             {
-              "id": "ef77a3e0-c3a7-49da-a1e1-ba6d21af7be8",
+              "id": "dfc2077a-21af-4d52-8276-26beca861ff2",
               "name": "Agent",
               "value": "={{ $('Error Trigger').item.json.workflow.name }}",
               "type": "string"
             },
             {
-              "id": "3ad89dc7-5b24-4e4e-a9ff-57f651146fee",
+              "id": "a370dfd4-315f-459d-b93e-5605d30441e8",
               "name": "Action",
               "value": "WorkflowError",
               "type": "string"
             },
             {
-              "id": "fb40b679-03a7-4458-af08-099e35719024",
+              "id": "f4f5c554-8e37-4a92-b6b9-d45657f3c82b",
               "name": "RecordID",
               "value": "={{ $('Error Trigger').item.json.execution.id }}",
               "type": "string"
             },
             {
-              "id": "87689a6f-d6f4-4471-83a3-972a1d64d53b",
+              "id": "66003a8e-6377-486e-b65b-521e911e7d21",
               "name": "InputSummary",
               "value": "={{ 'Failed node: ' + $('Error Trigger').item.json.execution.lastNodeExecuted }}",
               "type": "string"
             },
             {
-              "id": "c8d96408-49e3-4e00-8efc-c64e79d0fd29",
+              "id": "ea04035e-f536-49a9-89af-ffcef8e1455c",
               "name": "OutputSummary",
               "value": "={{ ($('Error Trigger').item.json.execution.error.message || '').slice(0, 200) }}",
               "type": "string"
             },
             {
-              "id": "818e260c-b641-4fa6-a3b2-c955f144f435",
+              "id": "f6dd27ff-805e-4bbc-bf7d-ef916df71906",
               "name": "HumanApproved",
               "value": "FALSE",
               "type": "string"
             },
             {
-              "id": "81358552-e540-4fa5-b17d-9bc2d2dc55e8",
+              "id": "48e5637b-229d-4546-bcbf-a844fc64df7b",
               "name": "ApprovedBy",
               "value": "",
               "type": "string"
             },
             {
-              "id": "6c5ace4b-2c32-45a7-a8f7-1335bfc62292",
+              "id": "c3ee15ed-a468-4b48-a4ae-414c4665a2ff",
               "name": "Model",
               "value": "none",
               "type": "string"
             },
             {
-              "id": "dea098f7-7898-4b81-814c-25e7d151bf1e",
+              "id": "786ac428-ef49-45f5-97b9-d1f349380d1c",
               "name": "InputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "939f2250-070c-43f9-93b3-00cd75aa718d",
+              "id": "f8f41c36-18ca-4454-a73e-3545e454e946",
               "name": "OutputTokens",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "f225d33c-d535-4a3b-8ded-63ec208b5a50",
+              "id": "996eec71-6f37-42ea-b5e9-fee974081da6",
               "name": "TokenCost",
               "value": 0,
               "type": "number"
             },
             {
-              "id": "a88597ff-d897-40f2-b4e6-1740c4c94a61",
+              "id": "b674251f-60b2-4e0e-8e8d-1398cd8e538e",
               "name": "ErrorFlag",
               "value": "TRUE",
               "type": "string"
@@ -207,7 +207,7 @@
         },
         "options": {}
       },
-      "id": "a7690eb0-1983-484b-a807-d899edc12bcf",
+      "id": "d7aabd30-3a87-4d21-b5ee-833e17076491",
       "name": "Audit – Error",
       "type": "n8n-nodes-base.set",
       "typeVersion": 3.4,
@@ -252,7 +252,7 @@
         },
         "options": {}
       },
-      "id": "ff022bb2-52fa-4c86-af4d-58847a73729d",
+      "id": "d51d9d51-0465-42ea-8cd3-7454df5f74c8",
       "name": "Append to AuditLog",
       "type": "n8n-nodes-base.googleSheets",
       "typeVersion": 4.5,

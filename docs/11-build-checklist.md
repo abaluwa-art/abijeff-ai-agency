@@ -33,12 +33,13 @@ Abijeff Investments Limited · AIOS build · Start date: __________ · Owner: __
 - [ ] 22. W1 one-tap send path added for complete genuine leads (Week 8)
 
 ### Weeks 9–12 — Live sourcing, reporting, hand-over
-- [ ] 23. W4 live: first supplier quote approved for procurement
+- [ ] 23. W4 live: first supplier quote approved; W7 Procurement imported; first QuickBooks PO created
 - [ ] 24. W5 Sync imported; Dashboard tab built; all 10 tiles show a value
-- [ ] 25. Reporting workflow sends the Friday 16:00 email; 5 numbers spot-checked
+- [ ] 25. W6 Weekly Report sends the Friday 16:00 email (5 numbers spot-checked); W9 Reconciliation active (Mondays)
 - [ ] 26. One non-financial workflow promoted to autonomy, with a written rollback rule
 - [ ] 27. Backup approver on Telegram group; approved 3 items with the owner watching, 1 alone
 - [ ] 28. All workflows downloaded to Drive `AIOS/backups/`; Airtable CSV export done
 - [ ] 29. Sections 11 and 12 printed and filed in the office
+- [ ] 30. (After Day 90) W8 Payments: BankLines tab, 2 weeks shadow, then live
 
 Signed complete: __________________ Date: __________

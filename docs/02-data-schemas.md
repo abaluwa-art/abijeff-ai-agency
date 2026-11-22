@@ -80,6 +80,7 @@ Two-line example (ORD-2026-0148): Rosewood 2.0 m³ × USD 1,450 plus Mahogany 3.
 | ContactEmail | Email | **Lowercase** (used for matching) | `sales@kabompotimber.co.zm` |
 | LastContactDate | Date | ISO (2026-11-12) | `2026-11-12` |
 | Notes | Long text | Record licence / conveyance-licence status here | `Licensed concession…` |
+| ➕ QBO_VendorID | Single line text | QuickBooks → Expenses → Vendors → open vendor → number at the end of the URL. Needed for purchase orders (W7) | `77` |
 
 #### Table `Prompts` (version control for agent instructions)
 
@@ -107,8 +108,22 @@ Rule: whenever you edit a system prompt in n8n, add a new row here first, with V
 | Reviewer | Single line text | | `Owner` |
 | ReviewedAt | Date | Include time | `2026-11-20 16:52` |
 | DenialReason | Long text | | `Wrong FX rate; use 25.62` |
+| ➕ OrderQty_m3 | Number, 1 decimal | **You type this** on an approved supplier quote to order timber. It starts the Procurement workflow (W7) | `7.0` |
+| ➕ LinkedPO | Single line text | Filled by W7 with the QuickBooks PO number; stops a second PO | `PO-SQ-20261121-101500` |
+| ➕ UpdatedAt | Last modified time | All fields. Required by the W7 trigger | `2026-11-21 10:20` |
 
 > ⚠️ **Airtable plan.** The Free plan allows about **1,000 API calls a month**. The Invoice trigger polls every 15 minutes, which is about 2,900 calls a month on its own. Buy **Airtable Team (1 seat)**. It is in the budget (Section 13). On Free, the workflows stop working partway through the month.
+
+### B2. Google Sheets `BankLines` (for the Payments workflow, W8)
+
+Each working day, paste new lines from your bank statement and Airtel Money / MTN MoMo statements. Leave **Status** empty; W8 fills it.
+
+| LineID | Date | Amount | Currency | Payer | Reference | Status | MatchedInvoices |
+|---|---|---|---|---|---|---|---|
+| ZANACO-20261121-003 | 2026-11-21 | 130447.80 | ZMW | CHONGWE BUILDERS | ORD-2026-0147 | Applied: QBO payment 2211 | ORD-2026-0147 |
+| MOMO-20261121-011 | 2026-11-21 | 2500.00 | ZMW | 0977xxxxxx | | Manual: Deny – personal transfer | |
+
+LineID must be unique. Use bank + date + line number, as above.
 
 ### B. Google Sheets `Inventory`
 
