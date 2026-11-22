@@ -1,0 +1,4 @@
+ApprovalID,OrderID,AgentName,Action,Payload,Status,Reviewer,ReviewedAt,DenialReason
+APR-20261120-164800-ORD-2026-0147,ORD-2026-0147,Invoicing Agent,PrepareInvoice,"{""subtotal"":112455,""vat"":17992.8,""total"":130447.8,""currency"":""ZMW"",""tpin"":""1003456789""}",Approved,Owner,2026-11-20T16:52:00+02:00,
+SRC-20261121-ROS-KD-50x150,,Inventory Agent,SourcingTask,"{""sku"":""ROS-KD-50x150"",""species"":""Rosewood"",""urgency"":""high"",""suggested_order_m3"":7}",Pending,,,
+ERR-20261121-071502-4411,,AIOS – Inventory Watchdog,WorkflowError,"{""failedNode"":""Read Inventory Sheet"",""message"":""The caller does not have permission""}",Error,,,

@@ -1,0 +1,3 @@
+Timestamp,Agent,Action,RecordID,InputSummary,OutputSummary,HumanApproved,ApprovedBy,TokenCost,ErrorFlag
+2026-11-20 16:53:10,Invoicing Agent,CreateQBOInvoice,ORD-2026-0147,ZMW 130447.8,QBO Invoice Id 1042,TRUE,Owner,0.000412,FALSE
+2026-11-21 07:00:41,Inventory Agent,DailyStockBriefing,2026-11-21 07:00,2 flagged of 5,Briefing sent; sourcing tasks evaluated,FALSE,,0.000356,FALSE

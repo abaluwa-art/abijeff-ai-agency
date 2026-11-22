@@ -1,0 +1,4 @@
+SupplierID,Name,Species,LastPrice_m3,Reliability,ContactEmail,LastContactDate,Notes
+SUP-001,Kabompo Timber Concessions,"Kiaat, Rosewood",580,4,sales@kabompotimber.co.zm,2026-11-12,Licensed concession; conveyance licence always supplied. 21-day lead time.
+SUP-002,Mwinilunga Sawmills,"Mahogany, Kiaat",640,3,info@mwinilungasawmills.co.zm,2026-10-30,Good quality; deliveries sometimes 1 week late.
+SUP-003,Zambezi Teak Plantations,Teak,520,5,orders@zambeziteak.co.zm,2026-11-05,Plantation teak; FSC chain-of-custody claimed (verify certificate).

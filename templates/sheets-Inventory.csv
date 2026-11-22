@@ -1,0 +1,6 @@
+SKU,Species,Grade,Dimensions,Stock_m3,ReorderLevel_m3,LastUpdated,Location,Notes
+TEAK-KD-50x150,Teak,Furniture-grade KD,50 x 150 mm x 2.4-4.8 m,18.4,8.0,2026-11-21,Yard A – Kiln shed,KD to 10-12% MC
+ROS-KD-50x150,Rosewood,Select,50 x 150 mm x 1.8-3.6 m,1.2,4.0,2026-11-20,Yard A – Rack 3,Mukusi; slow-drying
+MAH-KD-38x200,Mahogany,FAS,38 x 200 mm x 2.1-4.2 m,6.7,5.0,2026-11-21,Yard B – Shed 1,
+KIA-AD-75x225,Kiaat,Select,75 x 225 mm x 2.4-3.6 m,9.0,5.0,2026-11-10,Yard B – Open stack,Air-dried; recount due
+TEAK-SAWN-100x100,Teak,No.1 Common,100 x 100 mm x 3.0 m,22.5,10.0,2026-11-21,Yard C – Log yard,Green sawn posts

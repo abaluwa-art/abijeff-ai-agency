@@ -1,0 +1,340 @@
+{
+  "name": "AIOS – Error Handler",
+  "nodes": [
+    {
+      "parameters": {},
+      "id": "0ad11198-b1f5-4325-ad80-66f4360b7911",
+      "name": "Error Trigger",
+      "type": "n8n-nodes-base.errorTrigger",
+      "typeVersion": 1,
+      "position": [
+        0,
+        300
+      ],
+      "notes": "In EVERY other AIOS workflow: ⋯ → Settings → Error Workflow → 'AIOS – Error Handler'.",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "80a95efc-6564-4099-ae24-0aa2c7d0ab53",
+              "name": "telegramChatId",
+              "value": "123456789",
+              "type": "string"
+            },
+            {
+              "id": "29c13cbf-b91c-4223-a038-88a8e3356631",
+              "name": "businessName",
+              "value": "Mukwa Hardwoods Ltd",
+              "type": "string"
+            },
+            {
+              "id": "79963cc3-cb6e-4c77-b3e3-ee1bed355f2e",
+              "name": "inputCostPer1M",
+              "value": 0.15,
+              "type": "number"
+            },
+            {
+              "id": "734da862-9320-4586-b4a0-fdafa4eace85",
+              "name": "outputCostPer1M",
+              "value": 0.6,
+              "type": "number"
+            }
+          ]
+        },
+        "options": {},
+        "includeOtherFields": true
+      },
+      "id": "88593cda-0382-4a8a-865e-301315c3fdad",
+      "name": "Config",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        220,
+        300
+      ],
+      "notes": "EDIT ONCE: replace telegramChatId with your chat ID from @userinfobot (Section 5).",
+      "notesInFlow": true
+    },
+    {
+      "parameters": {
+        "operation": "create",
+        "base": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "AIOS_OPS"
+        },
+        "table": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "Approvals"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "ApprovalID": "={{ 'ERR-' + $now.toFormat('yyyyMMdd-HHmmss') + '-' + ($json.execution.id || 'x') }}",
+            "OrderID": "",
+            "AgentName": "={{ $json.workflow.name }}",
+            "Action": "WorkflowError",
+            "Payload": "={{ JSON.stringify({ workflow: $json.workflow.name, failedNode: $json.execution.lastNodeExecuted, message: $json.execution.error.message, executionUrl: $json.execution.url, mode: $json.execution.mode }) }}",
+            "Status": "Error",
+            "Reviewer": "",
+            "DenialReason": ""
+          },
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {
+          "typecast": true
+        }
+      },
+      "id": "43673244-7707-4f13-9af8-27ea5a89d5a4",
+      "name": "Dead-letter: Approvals (Status=Error)",
+      "type": "n8n-nodes-base.airtable",
+      "typeVersion": 2.1,
+      "position": [
+        440,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "chatId": "={{ $('Config').first().json.telegramChatId }}",
+        "text": "=🚨 <b>AIOS error</b>\n<b>Workflow:</b> {{ $('Error Trigger').item.json.workflow.name }}\n<b>Failed step:</b> {{ $('Error Trigger').item.json.execution.lastNodeExecuted }}\n<b>Error:</b> {{ ($('Error Trigger').item.json.execution.error.message || '').slice(0, 300) }}\n<b>Open:</b> {{ $('Error Trigger').item.json.execution.url }}\n\nLogged to Airtable → Approvals (Status = Error). Nothing was sent to a customer or to QuickBooks after this step.",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "id": "ecd38d25-48e5-4834-b86c-c843716b2cd1",
+      "name": "Telegram – Error Alert",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        660,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    },
+    {
+      "parameters": {
+        "assignments": {
+          "assignments": [
+            {
+              "id": "7159eb1c-74b9-448c-953c-eb0058fb6528",
+              "name": "Agent",
+              "value": "={{ $('Error Trigger').item.json.workflow.name }}",
+              "type": "string"
+            },
+            {
+              "id": "583dccfd-ad08-4c9f-b27e-42bef2afa1d0",
+              "name": "Action",
+              "value": "WorkflowError",
+              "type": "string"
+            },
+            {
+              "id": "0cd491f7-6d5d-48f3-ab8e-82664822d925",
+              "name": "RecordID",
+              "value": "={{ $('Error Trigger').item.json.execution.id }}",
+              "type": "string"
+            },
+            {
+              "id": "f4f035b9-8abb-4704-86e4-4a83228b6a67",
+              "name": "InputSummary",
+              "value": "={{ 'Failed node: ' + $('Error Trigger').item.json.execution.lastNodeExecuted }}",
+              "type": "string"
+            },
+            {
+              "id": "672dfeb8-b818-41b9-a529-4357d24d7c7b",
+              "name": "OutputSummary",
+              "value": "={{ ($('Error Trigger').item.json.execution.error.message || '').slice(0, 200) }}",
+              "type": "string"
+            },
+            {
+              "id": "651b7edd-82b4-4507-abfa-5737205d38ad",
+              "name": "HumanApproved",
+              "value": "FALSE",
+              "type": "string"
+            },
+            {
+              "id": "af3bac92-5d09-4ba7-8a95-057392be5429",
+              "name": "ApprovedBy",
+              "value": "",
+              "type": "string"
+            },
+            {
+              "id": "698704b4-d3c0-40a9-a3e0-63a08b969697",
+              "name": "Model",
+              "value": "none",
+              "type": "string"
+            },
+            {
+              "id": "039cf2e7-5bc1-4ee7-b41c-53cf33a8ed65",
+              "name": "InputTokens",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "d63f9583-6c05-417d-849c-16324507566f",
+              "name": "OutputTokens",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "1067eb0d-5fc2-42ac-a4ed-387914ab1c47",
+              "name": "TokenCost",
+              "value": 0,
+              "type": "number"
+            },
+            {
+              "id": "4e3b5149-8c7f-4541-97c0-3adf72ddb990",
+              "name": "ErrorFlag",
+              "value": "TRUE",
+              "type": "string"
+            }
+          ]
+        },
+        "options": {}
+      },
+      "id": "868a3101-488a-4f59-a63a-05f9b90cccca",
+      "name": "Audit – Error",
+      "type": "n8n-nodes-base.set",
+      "typeVersion": 3.4,
+      "position": [
+        880,
+        300
+      ]
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "AIOS Sheets (select your spreadsheet)"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": "",
+          "mode": "list",
+          "cachedResultName": "AuditLog"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "Timestamp": "={{ $now.setZone('Africa/Lusaka').toFormat('yyyy-MM-dd HH:mm:ss') }}",
+            "Agent": "={{ $json.Agent }}",
+            "Action": "={{ $json.Action }}",
+            "RecordID": "={{ $json.RecordID }}",
+            "InputSummary": "={{ $json.InputSummary }}",
+            "OutputSummary": "={{ $json.OutputSummary }}",
+            "HumanApproved": "={{ $json.HumanApproved }}",
+            "ApprovedBy": "={{ $json.ApprovedBy }}",
+            "TokenCost": "={{ $json.TokenCost }}",
+            "ErrorFlag": "={{ $json.ErrorFlag }}"
+          },
+          "matchingColumns": [],
+          "schema": [],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "id": "84131567-a916-42f6-8ef9-5b31d24a6c3c",
+      "name": "Append to AuditLog",
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.5,
+      "position": [
+        1100,
+        300
+      ],
+      "retryOnFail": true,
+      "maxTries": 3,
+      "waitBetweenTries": 5000
+    }
+  ],
+  "connections": {
+    "Error Trigger": {
+      "main": [
+        [
+          {
+            "node": "Config",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Config": {
+      "main": [
+        [
+          {
+            "node": "Dead-letter: Approvals (Status=Error)",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Dead-letter: Approvals (Status=Error)": {
+      "main": [
+        [
+          {
+            "node": "Telegram – Error Alert",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Telegram – Error Alert": {
+      "main": [
+        [
+          {
+            "node": "Audit – Error",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Audit – Error": {
+      "main": [
+        [
+          {
+            "node": "Append to AuditLog",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1",
+    "timezone": "Africa/Lusaka",
+    "saveManualExecutions": true,
+    "saveDataErrorExecution": "all",
+    "saveDataSuccessExecution": "all",
+    "executionTimeout": 300,
+    "callerPolicy": "workflowsFromSameOwner"
+  },
+  "pinData": {},
+  "meta": {
+    "templateCredsSetupCompleted": false
+  },
+  "tags": []
+}

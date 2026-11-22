@@ -1,0 +1,5 @@
+PromptID,AgentName,Version,PromptText,DateUpdated,ChangeReason
+PRM-SALES-1,Sales Agent,1,(paste prompts/sales-agent.md),2026-11-22,Initial version
+PRM-INV-1,Invoicing Agent,1,(paste prompts/invoicing-agent.md),2026-11-22,Initial version
+PRM-STOCK-1,Inventory Agent,1,(paste prompts/inventory-agent.md),2026-11-22,Initial version
+PRM-SRC-1,Sourcing Agent,1,(paste prompts/sourcing-agent.md),2026-11-22,Initial version
